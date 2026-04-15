@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thundera | Design System</title>
+    <!-- Web Fonts -->
+    <link href="https://fonts.cdnfonts.com/css/sansation" rel="stylesheet">
+    <link href="https://api.fontshare.com/v2/css?f[]=satoshi@900,700,500,300,400&display=swap" rel="stylesheet">
+    <!-- Phosphor Icons (Premium Icon Pack) -->
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    
+    <link rel="stylesheet" href="style/style.css">
+</head>
+<body>
+    <div class="glow-bg"></div>
+
+    <nav class="ds-nav">
+        <div class="logo">
+            <i class="ph-fill ph-lightning"></i> Thundera<span>.IA</span>
+        </div>
+        <ul class="nav-links">
+            <li><a href="#colors">Cores</a></li>
+            <li><a href="#typography">Tipografia</a></li>
+            <li><a href="#components">Componentes</a></li>
+            <li><a href="#assets">Assets</a></li>
+        </ul>
+    </nav>
+
+    <main class="ds-container">
+        <!-- Hero Section -->
+        <section class="ds-section hero-section">
+            <h1 class="font-sansation">Design System</h1>
+            <p class="font-satoshi text-complementary">A diretriz estética para as soluções <b>Thundera</b>. Desenhado com rigor analítico, minimalismo e foco total nos dados, transmitindo a seriedade de uma IA que entrega provas, não narrativas.</p>
+        </section>
+
+        <!-- Colors Section -->
+        <section id="colors" class="ds-section">
+            <h2 class="section-title"><i class="ph ph-palette"></i> Paleta de Cores</h2>
+            <div class="colors-grid">
+                <!-- Primary -->
+                <div class="color-card" data-hex="#FFCA28" style="--c: #FFCA28;">
+                    <div class="color-swatch"></div>
+                    <div class="color-info">
+                        <span class="color-name">Principal / Destaque</span>
+                        <span class="color-hex">#FFCA28</span>
+                    </div>
+                </div>
+
+                <!-- Secondary -->
+                <div class="color-card dark-bg" data-hex="#121212" style="--c: #121212; border: 1px solid rgba(255,255,255,0.1);">
+                    <div class="color-swatch"></div>
+                    <div class="color-info">
+                        <span class="color-name">Secundária / Fundo base</span>
+                        <span class="color-hex">#121212</span>
+                    </div>
+                </div>
+
+                <!-- Complementary -->
+                <div class="color-card dark-bg" data-hex="#FFFFFF" style="--c: #FFFFFF;">
+                    <div class="color-swatch" style="border: 1px solid rgba(0,0,0,0.1);"></div>
+                    <div class="color-info">
+                        <span class="color-name">Complementar / Texto</span>
+                        <span class="color-hex">#FFFFFF</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Typography Section -->
+        <section id="typography" class="ds-section">
+            <h2 class="section-title"><i class="ph ph-text-aa"></i> Tipografia</h2>
+            
+            <div class="typo-box glass-panel">
+                <div class="typo-header">
+                    <h3>Sansation</h3>
+                    <span>Títulos e Cabeçalhos de Impacto</span>
+                </div>
+                <div class="typo-examples font-sansation">
+                    <h1>H1. Decida sem narrativa.</h1>
+                    <h2>H2. Radar de risco de atraso</h2>
+                    <h3>H3. O rombo não é o atraso. É o retrabalho.</h3>
+                </div>
+            </div>
+
+            <div class="typo-box glass-panel">
+                <div class="typo-header">
+                    <h3>Satoshi</h3>
+                    <span>Texto Complementar, Corpo e UI</span>
+                </div>
+                <div class="typo-examples font-satoshi">
+                    <p class="font-bold">Bold: Quando o atraso aparece, a causa já estava ali há semanas.</p>
+                    <p class="font-medium">Medium: O problema é que ninguém junta sinais a tempo de evitar o colapso.</p>
+                    <p class="font-regular">Regular: Visão por squad e por função. Entrega, retrabalho, qualidade, senioridade pela complexidade dos cards entregues no sprint atual.</p>
+                    <p class="font-light text-muted">Light: Diretoria quer presencial "para garantir produtividade". Sem evidência, o remoto vira fé. E fé não segura orçamento no final do trimestre.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Graph / Components Section -->
+        <section id="components" class="ds-section">
+            <h2 class="section-title"><i class="ph ph-bounding-box"></i> Estilos Gráficos (UI Premium)</h2>
+            
+            <p class="section-desc">Nosso estilo visual utiliza <b>glassmorphism (caixas translúcidas)</b> combinados com fundos gradientes escuros refinados. Pontos de ação e sinais de atenção utilizam o amarelo institucional de forma minimalista para guiar a leitura.</p>
+
+            <div class="components-showcase">
+                
+                <!-- Data Card -->
+                <div class="showcase-row">
+                    <div class="glass-card stat-card">
+                        <div class="card-icon"><i class="ph ph-radar"></i></div>
+                        <div class="card-content">
+                            <h4>Radar de Risco</h4>
+                            <p class="font-satoshi">Visão preditiva de atraso na release atual.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="glass-card stat-card">
+                        <div class="card-icon"><i class="ph ph-arrows-clockwise"></i></div>
+                        <div class="card-content">
+                            <h4>Custo Invisível</h4>
+                            <p class="font-satoshi">Cadeia de retrabalho na esteira de dev.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Process Steps (Arrows) -->
+                <div class="process-steps">
+                    <div class="step glass-card highlight-border">
+                        <div class="step-icon"><i class="ph ph-x-circle text-primary"></i></div>
+                        <div class="step-number gradient-text highlight">01</div>
+                        <h5>QA devolve</h5>
+                        <p class="text-muted font-satoshi font-light">Você paga duas vezes pelo código.</p>
+                    </div>
+                    <i class="ph ph-arrow-right flow-arrow"></i>
+                    <div class="step glass-card">
+                        <div class="step-icon"><i class="ph ph-x-circle opacity-50"></i></div>
+                        <div class="step-number gradient-text">02</div>
+                        <h5>Qualidade cai</h5>
+                        <p class="text-muted font-satoshi font-light">Dívida técnica vira juros acumulados.</p>
+                    </div>
+                    <i class="ph ph-arrow-right flow-arrow"></i>
+                    <div class="step glass-card">
+                        <div class="step-icon"><i class="ph ph-x-circle opacity-50"></i></div>
+                        <div class="step-number gradient-text">03</div>
+                        <h5>Time ocupado</h5>
+                        <p class="text-muted font-satoshi font-light">Entrega de feature vira manutenção.</p>
+                    </div>
+                </div>
+
+                <!-- Alerts / Status -->
+                <div class="status-alerts">
+                    <div class="alert-badge warning glass-card">
+                        <span class="dot"></span>
+                        <div class="alert-text font-satoshi">
+                            <strong>Sinal Red</strong>
+                            <span>RISCO ALTO</span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- Assets -->
+        <section id="assets" class="ds-section">
+            <h2 class="section-title"><i class="ph ph-folder-notch"></i> Assets e Iconografia Prediletos</h2>
+            <p class="section-desc">Conjunto premium de ícones sugeridos para compor a interface. Linhas finas, precisas (estilo <i>Phosphor Light</i> ou <i>Regular</i>, combinando com o minimalismo).</p>
+
+            <div class="assets-grid glass-panel">
+                <div class="asset-item" title="Copiar nome">
+                    <i class="ph ph-radar"></i>
+                    <span>radar</span>
+                </div>
+                <div class="asset-item" title="Copiar nome">
+                    <i class="ph ph-chart-line-up"></i>
+                    <span>chart-line-up</span>
+                </div>
+                <div class="asset-item" title="Copiar nome">
+                    <i class="ph ph-users-three"></i>
+                    <span>users-three</span>
+                </div>
+                <div class="asset-item" title="Copiar nome">
+                    <i class="ph ph-warning-circle"></i>
+                    <span>warning-circle</span>
+                </div>
+                <div class="asset-item" title="Copiar nome">
+                    <i class="ph ph-lightning"></i>
+                    <span>lightning</span>
+                </div>
+                <div class="asset-item" title="Copiar nome">
+                    <i class="ph ph-arrow-up-right"></i>
+                    <span>arrow-up-right</span>
+                </div>
+                <div class="asset-item" title="Copiar nome">
+                    <i class="ph ph-target"></i>
+                    <span>target</span>
+                </div>
+                <div class="asset-item" title="Copiar nome">
+                    <i class="ph ph-shield-check"></i>
+                    <span>shield-check</span>
+                </div>
+                <div class="asset-item" title="Copiar nome">
+                    <i class="ph ph-infinity"></i>
+                    <span>infinity</span>
+                </div>
+                <div class="asset-item" title="Copiar nome">
+                    <i class="ph ph-intersect"></i>
+                    <span>intersect</span>
+                </div>
+                <div class="asset-item" title="Copiar nome">
+                    <i class="ph ph-trend-up"></i>
+                    <span>trend-up</span>
+                </div>
+                <div class="asset-item" title="Copiar nome">
+                    <i class="ph ph-clock-counter-clockwise"></i>
+                    <span>clock-counter</span>
+                </div>
+                <div class="asset-item" title="Copiar nome">
+                    <i class="ph ph-calendar-warning"></i>
+                    <span>calendar-warning</span>
+                </div>
+                <div class="asset-item" title="Copiar nome">
+                    <i class="ph ph-kanban"></i>
+                    <span>kanban</span>
+                </div>
+                <div class="asset-item" title="Copiar nome">
+                    <i class="ph ph-presentation-chart"></i>
+                    <span>presentation</span>
+                </div>
+                <div class="asset-item" title="Copiar nome">
+                    <i class="ph ph-checks"></i>
+                    <span>checks</span>
+                </div>
+                <div class="asset-item" title="Copiar nome">
+                    <i class="ph ph-bell-ringing"></i>
+                    <span>bell-ringing</span>
+                </div>
+                <div class="asset-item" title="Copiar nome">
+                    <i class="ph ph-brain"></i>
+                    <span>brain</span>
+                </div>
+                <div class="asset-item" title="Copiar nome">
+                    <i class="ph ph-activity"></i>
+                    <span>activity</span>
+                </div>
+                <div class="asset-item" title="Copiar nome">
+                    <i class="ph ph-strategy"></i>
+                    <span>strategy</span>
+                </div>
+            </div>
+        </section>
+        
+        <footer>
+            <div class="footer-content font-satoshi">
+                <p>Thundera.IA Design System &copy; 2026. Feito para alta disponibilidade visual e analítica.</p>
+            </div>
+        </footer>
+    </main>
+
+    <script src="js/script.js"></script>
+</body>
+</html>
