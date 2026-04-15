@@ -1,18 +1,38 @@
 @import url('style.css'); /* Import base tokens & fonts from design system var schema if needed */
 
 :root {
-    --bg-dark: #0a0a0a;
-    --bg-darker: #050505;
+    /* Dynamics */
+    --bg-dynamic: #050505;
     --text-main: #FFFFFF;
-    --text-muted: rgba(255, 255, 255, 0.6);
+    --text-muted: rgba(255, 255, 255, 0.85);
     --primary: #FFCA28;
     
     --glass-bg: rgba(255, 255, 255, 0.03);
     --glass-border: rgba(255, 255, 255, 0.08);
     --glass-blur: blur(24px);
 
+    /* Background do slide contextualizado vai sumir gradualmente */
+    --context-dark-alpha: 0.95; 
+
     --transition-slide: transform 0.8s cubic-bezier(0.77, 0, 0.175, 1), opacity 0.8s cubic-bezier(0.77, 0, 0.175, 1);
     --transition-anim: all 0.6s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+/* 
+ * -----------------------------------------
+ * LIGHT MODE TRIGGER (JS Dynamic Inversion)
+ * -----------------------------------------
+ */
+body.theme-light {
+    --text-main: #1A1A1A;
+    --text-muted: rgba(0, 0, 0, 0.7);
+    --glass-bg: rgba(0, 0, 0, 0.04);
+    --glass-border: rgba(0, 0, 0, 0.15);
+}
+
+/* Modificadores que impunham texto branco devem seguir a variável mestra fluída */
+.text-white {
+    color: var(--text-main) !important;
 }
 
 /* Base Body for Presentation */
@@ -22,11 +42,17 @@
     width: 100vw;
     height: 100vh;
     overflow: hidden; /* No scroll, strict slide logic */
-    background-color: var(--bg-darker);
+    background-color: var(--bg-dynamic);
     color: var(--text-main);
     font-family: 'Satoshi', sans-serif;
     position: relative;
     user-select: none; /* Prevent accidental text selection while navigating */
+    transition: background-color 0.8s ease-out, color 0.3s ease;
+}
+
+.slide-context-bg {
+    opacity: var(--context-dark-alpha, 1);
+    transition: opacity 0.8s ease-out;
 }
 
 /* Background Glow Setup */
@@ -184,6 +210,44 @@
     transform: translateZ(-200px) scale(0.9); /* Comes from background when moving back */
 }
 
+/* Slide Oculto Manualmente pelo Usuário */
+
+/* 1. Modo Edição (Rascunho): Visível mas apagado com etiqueta */
+.slide.hidden-slide {
+    opacity: 0.3 !important;
+    filter: grayscale(1);
+}
+.slide.hidden-slide::after {
+    content: '[ OCULTO NA APRESENTAÇÃO ]';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: rgba(255, 42, 42, 0.2);
+    border: 2px solid rgba(255, 42, 42, 0.8);
+    color: white;
+    padding: 1.5cqh 3cqw;
+    font-family: 'Sansation', sans-serif;
+    font-size: 2.5cqw;
+    font-weight: bold;
+    border-radius: 12px;
+    letter-spacing: 6px;
+    z-index: 999;
+    box-shadow: 0 10px 40px rgba(255, 42, 42, 0.2);
+    backdrop-filter: blur(10px);
+}
+
+/* 2. Modo Apresentação (Tela Cheia): Exclusão Visual Completa */
+body.is-presenting .slide.hidden-slide {
+    display: none !important;
+}
+
+/* Ícone de olho quando ativado fica vermelho */
+#btn-toggle-eye.is-hidden {
+    color: #FF2A2A;
+    opacity: 1;
+}
+
 /* ================== SLIDE CONTENT STYLES ================== */
 
 .slide-content {
@@ -200,6 +264,14 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
+}
+
+/* Common Grids */
+.dimensions-grid {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+    gap: 2cqw;
 }
 
 .align-center {
@@ -315,6 +387,10 @@
 .slide-map-overlay {
     position: fixed;
     top: 0; left: 0; width: 100vw; height: 100vh;
+    /* Force Dark Theme Vars for Map */
+    --text-main: #FFFFFF;
+    --text-muted: rgba(255,255,255,0.85);
+    color: var(--text-main);
     background: rgba(5, 5, 5, 0.95);
     backdrop-filter: blur(30px);
     -webkit-backdrop-filter: blur(30px);
@@ -998,3 +1074,324 @@
 .arrow-head { opacity: 0; }
 .slide-active .arrow-head { animation: fadeInSVG 0.1s ease-out forwards; animation-delay: inherit; }
 @keyframes fadeInSVG { to { opacity: 1; } }
+
+/* ================== MOBILE RESPONSIVENESS ================== */
+
+@media (max-width: 768px) {
+    /* Global Base Transitions */
+    .presentation-body {
+        overflow-y: auto;
+    }
+
+    .ui-header {
+        padding: 0.8rem 1rem;
+        opacity: 1; /* Always visible on mobile for better UX */
+        height: 60px;
+        background: rgba(10, 10, 12, 0.9);
+        backdrop-filter: blur(10px);
+        border-bottom: 1px solid rgba(255,255,255,0.05);
+    }
+    .progress-bar-container {
+        height: 3px;
+        top: 60px;
+    }
+    .logo img {
+        height: 25px !important;
+    }
+    .slide-counter {
+        font-size: 0.7rem;
+    }
+    .ui-controls {
+        gap: 0.5rem;
+    }
+    .btn-icon {
+        width: 32px;
+        height: 32px;
+        font-size: 1.1rem;
+    }
+
+    /* Slides Engine Adjustment */
+    .slide {
+        padding: 80px 5vw 40px 5vw;
+        overflow-x: hidden;
+    }
+    .presentation-body {
+        overflow-x: hidden;
+    }
+
+    .slide-content {
+        aspect-ratio: auto; /* Break the 16:9 constraint */
+        width: 100%;
+        max-width: 100%;
+        height: auto;
+        min-height: 100%;
+        padding: 2rem 0;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        container-type: unset; /* Fallback to vw/vh logic */
+    }
+
+    /* Typography Overrides (Using VW for strict mobile control) */
+    .hero-title { font-size: 9vw; letter-spacing: -1px; }
+    .hero-subtitle { font-size: 4.2vw; max-width: 90%; }
+    .ultra-title { font-size: 8.5vw !important; }
+    .section-heading { font-size: 7.5vw !important; }
+    .text-desc { font-size: 4vw !important; line-height: 1.5; }
+    .title-md { font-size: 5vw !important; }
+    .text-md { font-size: 3.5vw !important; }
+
+    /* Layout Components */
+    .glass-box {
+        padding: 1.5rem !important;
+    }
+    .icon-circle {
+        width: 15vw; height: 15vw;
+        font-size: 7vw;
+    }
+
+    /* SLIDE 01: CAPA (Vertical Stack) */
+    .cover-layout {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 3rem;
+    }
+    .cover-header {
+        position: static;
+        transform: none;
+    }
+    .cover-title-area {
+        position: static;
+        transform: none;
+        width: 100%;
+    }
+    .center-person {
+        position: relative;
+        bottom: auto;
+        left: auto;
+        transform: none;
+        width: 90%;
+        height: 40vh;
+        margin: 0 auto;
+    }
+    .absolute-left, .absolute-right {
+        position: static;
+        width: 100%;
+        margin-top: 1rem;
+    }
+    .solid-yellow-box {
+        padding: 1.5rem;
+    }
+
+    /* SLIDE 04: Ecosystem Map (Vertical List) */
+    .ecosystem-container {
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important;
+        gap: 2rem !important;
+        padding-top: 2rem !important;
+    }
+    .data-lines-svg { display: none !important; }
+    .tool-node {
+        position: static !important;
+        transform: none !important;
+        width: 80% !important;
+    }
+    .thundera-core {
+        position: static !important;
+        transform: none !important;
+        margin-top: 2rem !important;
+        order: 10; /* Core at the bottom or middle */
+    }
+    .tool-icon {
+        width: 15vw !important;
+        height: 15vw !important;
+    }
+    .tool-icon i { font-size: 8vw !important; }
+    .tool-icon img { width: 8vw !important; height: auto !important; }
+
+    /* SLIDE 05: Analytics Grids */
+    .dimensions-grid {
+        grid-template-columns: 1fr !important;
+        grid-template-rows: auto !important;
+        gap: 1.5rem !important;
+    }
+    .dimensions-grid > div {
+        grid-column: span 1 !important;
+        min-height: 120px;
+    }
+
+    /* SLIDE 06: Split Layouts */
+    .align-split {
+        flex-direction: column !important;
+        height: auto !important;
+        gap: 2rem !important;
+    }
+    .split-left, .split-right {
+        width: 100% !important;
+        flex: none !important;
+    }
+
+    /* SLIDE 07: SQUAD HEALTH (Vertical Stack) */
+    #slide-7 .anim-group.anim-2 {
+        flex-direction: column !important;
+        align-items: center !important;
+        gap: 4rem !important;
+        padding: 0 !important;
+    }
+    #slide-7 .anim-group.anim-2 > div {
+        width: 100% !important;
+    }
+    #slide-7 .ph-arrow-right {
+        transform: rotate(90deg) !important;
+    }
+    #slide-7 .cpu-glow {
+        width: 40vw !important;
+        height: 40vw !important;
+    }
+    #slide-7 .cpu-glow h3 {
+        font-size: 5vw !important;
+    }
+    #slide-7 .border-warning[style*="calc(100% + 2cqh)"] {
+        position: relative !important;
+        bottom: auto !important;
+        left: auto !important;
+        transform: none !important;
+        width: 100% !important;
+        margin-bottom: 2rem !important;
+    }
+    #slide-7 .border-warning[style*="calc(100% + 2cqh)"] div[style*="border-top"] {
+        display: none !important; /* Hide the arrow pointer and elbow line */
+    }
+
+    /* SLIDE 08: IA AUDIT (Simplified Stack) */
+    #slide-8 .anim-group.anim-2 {
+        padding: 0 4vw !important;
+        margin-top: 3rem !important;
+    }
+    #slide-8 .glass-box[style*="height: 14cqh"] {
+        height: auto !important;
+        padding: 1rem !important;
+    }
+    #slide-8 .anim-pipe-1, #slide-8 .anim-pipe-2, #slide-8 .anim-pipe-3, #slide-8 .anim-pop-late[style*="width: 8px"] {
+        display: none !important; /* Hide horizontal circuitry */
+    }
+    #slide-8 .anim-group.anim-4 {
+        height: 4rem !important; /* Spacing instead of lines */
+    }
+    #slide-8 .anim-group.anim-5 {
+        margin-top: 1rem !important;
+    }
+    #slide-8 .anim-bar-audit span {
+        font-size: 3.5vw !important;
+    }
+
+    /* SLIDE 09: Ranking Table */
+    .table-responsive-wrapper {
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+    }
+    table {
+        min-width: 600px; /* Force scroll for data density */
+    }
+
+    /* SLIDE 10: ESCUDO 3D */
+    #slide-10 .flow-layout {
+        padding: 2rem 0 !important;
+    }
+    #slide-10 .flow-layout > div {
+        flex-direction: column !important;
+        gap: 3rem !important;
+    }
+    #slide-10 .flow-layout > div > div {
+        width: 100% !important;
+    }
+    /* 3D Graphic Scaling */
+    #slide-10 .anim-group.anim-3 {
+        height: 40vh !important;
+        margin: 0 !important;
+    }
+    #slide-10 .ph-shield {
+        font-size: 60vw !important;
+    }
+    #slide-10 img[src*="icone homem.png"] {
+        width: 50vw !important;
+    }
+
+    /* SLIDE 11: ROI Equation (Vertical Stack) */
+    #slide-11 .anim-group.anim-2 {
+        flex-direction: column !important;
+        align-items: center !important;
+        gap: 6cqh !important;
+        margin-top: 5cqh !important;
+    }
+    #slide-11 .anim-group.anim-2 > div {
+        width: 100% !important;
+    }
+    #slide-11 .anim-group.anim-2 > div:nth-child(2) {
+        display: none !important; /* Hide the middle "=" and arrow */
+    }
+    #slide-11 i.ph-user {
+        font-size: 10vw !important;
+    }
+
+    /* SLIDE 12: Timeline (Vertical Stack) */
+    #slide-12 .anim-group.anim-2 {
+        flex-direction: column !important;
+        align-items: center !important;
+        gap: 8cqh !important;
+        margin-top: 5cqh !important;
+        padding: 0 4vw !important;
+    }
+    #slide-12 .anim-group.anim-2 > div[style*="width: 25%"] {
+        width: 100% !important;
+    }
+    #slide-12 .absolute[style*="height: 3px"] {
+        display: none !important; /* Hide the horizontal connector line */
+    }
+    #slide-12 .glass-box.flex-center {
+        width: 20vw !important;
+        height: 20vw !important;
+    }
+    #slide-12 .glass-box.flex-center i {
+        font-size: 10vw !important;
+    }
+    #slide-12 .anim-float {
+        top: -10vh !important;
+    }
+
+    /* SLIDE 13: OBRIGADO (Vertical Stack) */
+    #slide-13 .slide-content {
+        justify-content: flex-start !important;
+        align-items: center;
+        gap: 4rem;
+        text-align: center;
+    }
+    .final-content-wrapper {
+        width: 100% !important;
+        padding: 0 !important;
+        align-items: center !important;
+        text-align: center !important;
+        order: 1;
+    }
+    .final-content-wrapper .ph-logo {
+        justify-content: center !important;
+    }
+    .revealed-person {
+        position: relative !important;
+        width: 90% !important;
+        height: 40vh !important;
+        right: auto !important;
+        bottom: auto !important;
+        transform: translateY(20px) !important;
+        order: 2;
+    }
+    #slide-13.slide-active .revealed-person {
+        transform: translateY(0) !important;
+    }
+
+    /* Navigation Arrows Hidden on Mobile */
+    .nav-hitbox { display: none !important; }
+}
+
