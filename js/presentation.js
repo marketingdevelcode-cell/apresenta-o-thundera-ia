@@ -159,6 +159,33 @@ document.addEventListener('DOMContentLoaded', () => {
         if (currentSlideIndex > 0) goToSlide(currentSlideIndex - 1);
     }
 
+    // --- Animation Hooks ---
+    function animateScoreCount() {
+        const scoreEl = document.getElementById('thundera-score-value');
+        if (!scoreEl) return;
+
+        const target = 88;
+        const duration = 2000; // 2 seconds
+        const startTime = Date.now();
+
+        function update() {
+            const now = Date.now();
+            const progress = Math.min((now - startTime) / duration, 1);
+            
+            // Easing function for smoother feel (easeOutExpo)
+            const easedProgress = progress === 1 ? 1 : 1 - Math.pow(2, -10 * progress);
+            const current = Math.floor(easedProgress * target);
+            
+            scoreEl.textContent = current;
+
+            if (progress < 1) {
+                requestAnimationFrame(update);
+            }
+        }
+
+        requestAnimationFrame(update);
+    }
+
     function updateDOM() {
         // 1. Update counter
         displayCurrent.textContent = String(currentSlideIndex + 1).padStart(2, '0');
@@ -174,6 +201,11 @@ document.addEventListener('DOMContentLoaded', () => {
         slides.forEach((slide, idx) => {
             if (idx === currentSlideIndex) {
                 slide.classList.add('slide-active');
+                
+                // Trigger Slide 10 (Score) specific animation
+                if (slide.id === 'slide-10') {
+                    animateScoreCount();
+                }
             } else if (idx < currentSlideIndex) {
                 slide.classList.add('slide-prev');
             } else {
