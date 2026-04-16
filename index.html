@@ -27,13 +27,24 @@
         <div class="logo">
             <img src="assets/logo-amarelo-branco.png" alt="Thundera IA" class="logo-white"
                 style="height: 4.2vh; display: block;" />
-            <img src="assets/logo thundera preto.png" alt="Thundera IA" class="logo-black"
-                style="height: 4.2vh; display: none;" />
+        </div>
+
+        <!-- New: Company Global Selector -->
+        <div class="header-center">
+            <div class="company-dropdown-wrapper">
+                <select id="company-selector" class="font-satoshi company-select">
+                    <!-- Populated via JS -->
+                </select>
+            </div>
         </div>
 
         <div class="ui-controls">
+            <!-- New: Analysis View Toggle -->
+            <button id="btn-study-area" class="btn-icon" title="Área de Estudo / Deep Dive (A)">
+                <i class="ph ph-magnifying-glass-plus"></i>
+            </button>
             <div class="slide-counter font-satoshi text-muted">
-                <span id="current-slide">01</span> / <span id="total-slides">02</span>
+                <span id="current-slide">01</span> / <span id="total-slides">16</span>
             </div>
             <button id="btn-toggle-eye" class="btn-icon" title="Ocultar da Apresentação (O)">
                 <i class="ph ph-eye"></i>
@@ -64,8 +75,9 @@
     <!-- Slides Engine -->
     <main class="slides-container" id="slides-container">
 
-        <!-- Slide 01: Capa -->
+        <!-- Slide 01: Capa (Active) -->
         <section class="slide slide-active" id="slide-1" data-title="Capa">
+            <!-- (Content remains same) -->
             <div class="slide-content cover-layout">
 
                 <div class="cover-header">
@@ -118,8 +130,60 @@
             </div>
         </section>
 
-        <!-- Slide 02: A Ilusão do Valor -->
-        <section class="slide" id="slide-2" data-title="A Ilusão do Valor">
+        <!-- NEW Slide 02: Panorama do Prospect (Dynamic Dashboard) -->
+        <section class="slide" id="slide-2" data-title="Panorama do Prospect">
+            <div class="slide-context-bg" style="position: absolute; top:0; left:0; width:100%; height:100%; background: radial-gradient(circle at 10% 10%, rgba(255, 202, 40, 0.05) 0%, rgba(10, 10, 12, 0.98) 80%); z-index: -2;"></div>
+            
+            <div class="slide-content flow-layout" style="justify-content: flex-start; padding-top: 4cqh;">
+                <div class="anim-group anim-1 w-full focus-title">
+                    <h2 class="font-sansation section-heading">Panorama Estratégico:<br>
+                        <span id="dash-empresa-nome" class="text-primary">Carregando...</span>
+                    </h2>
+                </div>
+
+                <div class="anim-group anim-2 grid grid-cols-3 gap-6 w-full" style="margin-top: 4cqh; display: grid; grid-template-columns: repeat(3, 1fr); gap: 2cqw;">
+                    <!-- Card 1: Decisor -->
+                    <div class="glass-box dashboard-card">
+                        <div class="card-label font-sansation">Decisor Principal</div>
+                        <div id="dash-decisor-nome" class="card-value font-satoshi">...</div>
+                        <i class="ph-fill ph-user-focus card-bg-icon"></i>
+                    </div>
+                    <!-- Card 2: Tempo de Empresa -->
+                    <div class="glass-box dashboard-card">
+                        <div class="card-label font-sansation">Tempo de Casa</div>
+                        <div id="dash-decisor-tempo" class="card-value font-satoshi">...</div>
+                        <i class="ph-fill ph-calendar card-bg-icon"></i>
+                    </div>
+                    <!-- Card 3: Faturamento -->
+                    <div class="glass-box dashboard-card">
+                        <div class="card-label font-sansation">Faturamento Anual</div>
+                        <div id="dash-faturamento" class="card-value font-satoshi">...</div>
+                        <i class="ph-fill ph-currency-circle-dollar card-bg-icon"></i>
+                    </div>
+                    <!-- Card 4: Orçamento TI -->
+                    <div class="glass-box dashboard-card">
+                        <div class="card-label font-sansation">Orçamento TI</div>
+                        <div id="dash-orcamento" class="card-value font-satoshi">...</div>
+                        <i class="ph-fill ph-money card-bg-icon"></i>
+                    </div>
+                    <!-- Card 5: % Receita -->
+                    <div class="glass-box dashboard-card">
+                        <div class="card-label font-sansation">% TI da Receita</div>
+                        <div id="dash-percentual" class="card-value font-satoshi">...</div>
+                        <i class="ph-fill ph-chart-pie-slice card-bg-icon"></i>
+                    </div>
+                    <!-- Card 6: Setor -->
+                    <div class="glass-box dashboard-card highlight-glow">
+                        <div class="card-label font-sansation">Setor de Atuação</div>
+                        <div id="dash-setor" class="card-value font-satoshi">...</div>
+                        <i class="ph-fill ph-buildings card-bg-icon"></i>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Slide 03: A Ilusão do Valor -->
+        <section class="slide" id="slide-3" data-title="A Ilusão do Valor">
             <div class="slide-content flow-layout">
 
                 <div class="anim-group anim-1 w-full text-center mb-4">
@@ -2101,7 +2165,25 @@
         <div class="nav-arrow"><i class="ph ph-caret-right"></i></div>
     </div>
 
-    <!-- JS Logic -->
+    <!-- NEW: Area de Estudo do Prospect (Deep Dive Analysis) -->
+    <div id="study-area-overlay" class="study-overlay hidden">
+        <div class="study-modal glass-box">
+            <header class="study-header">
+                <div class="study-title">
+                    <h2 class="font-sansation text-primary" id="study-empresa-header">Análise Profunda</h2>
+                    <span id="study-setor-header" class="font-satoshi text-muted uppercase">...</span>
+                </div>
+                <button id="btn-close-study" class="btn-icon"><i class="ph ph-x"></i></button>
+            </header>
+            
+            <div class="study-body font-satoshi" id="study-details-grid">
+                <!-- Populated via JS -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="js/companyData.js"></script>
     <script src="js/presentation.js"></script>
 </body>
 

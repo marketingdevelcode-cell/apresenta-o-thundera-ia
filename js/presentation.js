@@ -25,14 +25,23 @@ document.addEventListener('DOMContentLoaded', () => {
     const btnFullscreen = document.getElementById('btn-fullscreen');
     const btnToggleEye = document.getElementById('btn-toggle-eye');
     
+    // New: Company & Study UI
+    const companySelector = document.getElementById('company-selector');
+    const btnStudyArea = document.getElementById('btn-study-area');
+    const studyOverlay = document.getElementById('study-area-overlay');
+    const btnCloseStudy = document.getElementById('btn-close-study');
+    
     // Navigation Hitboxes
     const prevHitbox = document.getElementById('nav-area-prev');
     const nextHitbox = document.getElementById('nav-area-next');
     
     let isMapOpen = false;
+    let isStudyOpen = false;
 
     // --- Init ---
     function init() {
+        populateCompanySelector();
+        initializeCompanyContext();
         compileSlides();
     }
 
@@ -159,7 +168,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (currentSlideIndex > 0) goToSlide(currentSlideIndex - 1);
     }
 
-    // --- Animation Hooks ---
+    // --- Numerical Count Animation ---
     function animateScoreCount() {
         const scoreEl = document.getElementById('thundera-score-value');
         if (!scoreEl) return;
@@ -184,6 +193,86 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
         requestAnimationFrame(update);
+    }
+
+    // --- Company Logic ---
+    function populateCompanySelector() {
+        if (!companySelector) return;
+        
+        companySelector.innerHTML = companyData.map(c => 
+            `<option value="${c.id}">${c.empresa_nome}</option>`
+        ).join('');
+    }
+
+    function initializeCompanyContext() {
+        if (!companySelector) return;
+        const firstId = companyData[0].id;
+        updateCompanyContext(firstId);
+    }
+
+    function updateCompanyContext(id) {
+        const data = companyData.find(c => c.id === id);
+        if (!data) return;
+
+        // 1. Update Slide Dashboard (Slide 2)
+        document.getElementById('dash-empresa-nome').textContent = data.empresa_nome;
+        document.getElementById('dash-decisor-nome').textContent = data.decisor_nome;
+        document.getElementById('dash-decisor-tempo').textContent = data.decisor_tempo_empresa;
+        document.getElementById('dash-faturamento').textContent = data.faturamento_anual;
+        document.getElementById('dash-orcamento').textContent = data.orcamento_ti;
+        document.getElementById('dash-percentual').textContent = data.ti_percentual_receita;
+        document.getElementById('dash-setor').textContent = data.empresa_setor;
+
+        // 2. Update Study Area (Deep Dive)
+        document.getElementById('study-empresa-header').textContent = data.empresa_nome;
+        document.getElementById('study-setor-header').textContent = data.empresa_setor;
+        
+        const grid = document.getElementById('study-details-grid');
+        grid.innerHTML = '';
+        
+        const fields = [
+            { label: 'Empresa', val: data.empresa_nome },
+            { label: 'Setor', val: data.empresa_setor },
+            { label: 'Decisor', val: data.decisor_nome },
+            { label: 'Cargo', val: data.decisor_cargo },
+            { label: 'Tempo de Empresa', val: data.decisor_tempo_empresa },
+            { label: 'Faturamento Anual', val: data.faturamento_anual },
+            { label: 'Orçamento TI', val: data.orcamento_ti },
+            { label: 'TI/Receita (%)', val: data.ti_percentual_receita },
+            { label: 'Crescimento Orç.', val: data.crescimento_orcamento },
+            { label: 'Nível Hierárquico', val: data.nivel_hierarquico },
+            { label: 'Reporte de TI', val: data.reporte_ti },
+            { label: 'Perspectiva Negócio', val: data.perspectiva_negocio },
+            { label: 'Modelo Compra', val: data.modelo_compra },
+            { label: 'Investimento em', val: data.trimestre_investimento },
+            { label: 'Dificuldade Talentos', val: data.dificuldade_talentos },
+            { label: 'Maturidade Inovação', val: data.maturidade_inovacao },
+            { label: 'Temas sem Fornecedor', val: data.temas_sem_fornecedor },
+            { label: 'Top 6 Desafios', val: data.desafios_top6.join(', ') }
+        ];
+
+        fields.forEach(f => {
+            const item = document.createElement('div');
+            item.className = 'study-item'; // Removed anim-fade-in to ensure visibility
+            item.innerHTML = `
+                <span class="study-label">${f.label}</span>
+                <span class="study-value">${f.val || 'Não informado'}</span>
+            `;
+            grid.appendChild(item);
+        });
+    }
+
+    function toggleStudyArea(forceState) {
+        isStudyOpen = forceState !== undefined ? forceState : !isStudyOpen;
+        if (isStudyOpen) {
+            studyOverlay.classList.remove('hidden');
+            studyOverlay.classList.add('active');
+        } else {
+            studyOverlay.classList.remove('active');
+            setTimeout(() => {
+                if(!isStudyOpen) studyOverlay.classList.add('hidden');
+            }, 400);
+        }
     }
 
     function updateDOM() {
@@ -294,6 +383,16 @@ document.addEventListener('DOMContentLoaded', () => {
     btnMap.addEventListener('click', () => toggleMap());
     btnCloseMap.addEventListener('click', () => toggleMap(false));
     btnFullscreen.addEventListener('click', toggleFullscreen);
+
+    // Company UI Listeners
+    if (companySelector) {
+        companySelector.addEventListener('change', (e) => {
+            updateCompanyContext(e.target.value);
+        });
+    }
+
+    if (btnStudyArea) btnStudyArea.addEventListener('click', () => toggleStudyArea());
+    if (btnCloseStudy) btnCloseStudy.addEventListener('click', () => toggleStudyArea(false));
     
     // Hitboxes
     prevHitbox.addEventListener('click', prevSlide);
@@ -324,6 +423,10 @@ document.addEventListener('DOMContentLoaded', () => {
             case 'm':
             case 'M':
                 toggleMap();
+                break;
+            case 'a':
+            case 'A':
+                toggleStudyArea();
                 break;
             case 'o':
             case 'O':
