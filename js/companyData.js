@@ -355,6 +355,27 @@ const companyData = [
     "dificuldade_talentos": "Sim (contratação e engajamento — senioridade escassa)",
     "maturidade_inovacao": "Escalonada",
     "temas_sem_fornecedor": "Conectividade, nuvem pública, LGPD, gestão de dados"
+  },
+  {
+    "id": "procergs",
+    "empresa_nome": "Procergs",
+    "empresa_setor": "Governo / TI Pública (RS)",
+    "decisor_nome": "Diogo Iori",
+    "decisor_cargo": "Líder de TI",
+    "decisor_tempo_empresa": "Desde dezembro de 2009",
+    "faturamento_anual": "R$ 500–600 MM",
+    "orcamento_ti": "R$ 400–500 MM",
+    "ti_percentual_receita": "~80% (empresa de TI pública)",
+    "crescimento_orcamento": "+20% a +30%",
+    "nivel_hierarquico": "Gerência",
+    "reporte_ti": "CEO/Presidência",
+    "perspectiva_negocio": "Crescimento",
+    "modelo_compra": "Licitação pública (edital/pregão)",
+    "trimestre_investimento": "Q2 2026",
+    "desafios_top6": ["Talentos", "SRE/Observabilidade", "Governança/compliance", "Modernizar legados", "Priorizar portfólio", "Cibersegurança"],
+    "dificuldade_talentos": "Sim (disputa salarial, processo lento)",
+    "maturidade_inovacao": "Estruturada",
+    "temas_sem_fornecedor": "IA/ML, IA Generativa"
   }
 ];
 
