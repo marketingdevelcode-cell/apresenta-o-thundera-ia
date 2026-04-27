@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,9 +10,10 @@
     <link href="https://api.fontshare.com/v2/css?f[]=satoshi@900,700,500,300,400&display=swap" rel="stylesheet">
     <!-- Phosphor Icons (Premium Icon Pack) -->
     <script src="https://unpkg.com/@phosphor-icons/web"></script>
-    
+
     <link rel="stylesheet" href="style/style.css">
 </head>
+
 <body>
     <div class="glow-bg"></div>
 
@@ -23,6 +25,7 @@
             <li><a href="#colors">Cores</a></li>
             <li><a href="#typography">Tipografia</a></li>
             <li><a href="#components">Componentes</a></li>
+            <li><a href="#backgrounds">Backgrounds 3D</a></li>
             <li><a href="#assets">Assets</a></li>
         </ul>
     </nav>
@@ -31,7 +34,9 @@
         <!-- Hero Section -->
         <section class="ds-section hero-section">
             <h1 class="font-sansation">Design System</h1>
-            <p class="font-satoshi text-complementary">A diretriz estética para as soluções <b>Thundera</b>. Desenhado com rigor analítico, minimalismo e foco total nos dados, transmitindo a seriedade de uma IA que entrega provas, não narrativas.</p>
+            <p class="font-satoshi text-complementary">A diretriz estética para as soluções <b>Thundera</b>. Desenhado
+                com rigor analítico, minimalismo e foco total nos dados, transmitindo a seriedade de uma IA que entrega
+                provas, não narrativas.</p>
         </section>
 
         <!-- Colors Section -->
@@ -48,7 +53,8 @@
                 </div>
 
                 <!-- Secondary -->
-                <div class="color-card dark-bg" data-hex="#121212" style="--c: #121212; border: 1px solid rgba(255,255,255,0.1);">
+                <div class="color-card dark-bg" data-hex="#121212"
+                    style="--c: #121212; border: 1px solid rgba(255,255,255,0.1);">
                     <div class="color-swatch"></div>
                     <div class="color-info">
                         <span class="color-name">Secundária / Fundo base</span>
@@ -70,7 +76,7 @@
         <!-- Typography Section -->
         <section id="typography" class="ds-section">
             <h2 class="section-title"><i class="ph ph-text-aa"></i> Tipografia</h2>
-            
+
             <div class="typo-box glass-panel">
                 <div class="typo-header">
                     <h3>Sansation</h3>
@@ -90,9 +96,12 @@
                 </div>
                 <div class="typo-examples font-satoshi">
                     <p class="font-bold">Bold: Quando o atraso aparece, a causa já estava ali há semanas.</p>
-                    <p class="font-medium">Medium: O problema é que ninguém junta sinais a tempo de evitar o colapso.</p>
-                    <p class="font-regular">Regular: Visão por squad e por função. Entrega, retrabalho, qualidade, senioridade pela complexidade dos cards entregues no sprint atual.</p>
-                    <p class="font-light text-muted">Light: Diretoria quer presencial "para garantir produtividade". Sem evidência, o remoto vira fé. E fé não segura orçamento no final do trimestre.</p>
+                    <p class="font-medium">Medium: O problema é que ninguém junta sinais a tempo de evitar o colapso.
+                    </p>
+                    <p class="font-regular">Regular: Visão por squad e por função. Entrega, retrabalho, qualidade,
+                        senioridade pela complexidade dos cards entregues no sprint atual.</p>
+                    <p class="font-light text-muted">Light: Diretoria quer presencial "para garantir produtividade". Sem
+                        evidência, o remoto vira fé. E fé não segura orçamento no final do trimestre.</p>
                 </div>
             </div>
         </section>
@@ -100,11 +109,13 @@
         <!-- Graph / Components Section -->
         <section id="components" class="ds-section">
             <h2 class="section-title"><i class="ph ph-bounding-box"></i> Estilos Gráficos (UI Premium)</h2>
-            
-            <p class="section-desc">Nosso estilo visual utiliza <b>glassmorphism (caixas translúcidas)</b> combinados com fundos gradientes escuros refinados. Pontos de ação e sinais de atenção utilizam o amarelo institucional de forma minimalista para guiar a leitura.</p>
+
+            <p class="section-desc">Nosso estilo visual utiliza <b>glassmorphism (caixas translúcidas)</b> combinados
+                com fundos gradientes escuros refinados. Pontos de ação e sinais de atenção utilizam o amarelo
+                institucional de forma minimalista para guiar a leitura.</p>
 
             <div class="components-showcase">
-                
+
                 <!-- Data Card -->
                 <div class="showcase-row">
                     <div class="glass-card stat-card">
@@ -114,7 +125,7 @@
                             <p class="font-satoshi">Visão preditiva de atraso na release atual.</p>
                         </div>
                     </div>
-                    
+
                     <div class="glass-card stat-card">
                         <div class="card-icon"><i class="ph ph-arrows-clockwise"></i></div>
                         <div class="card-content">
@@ -162,10 +173,143 @@
             </div>
         </section>
 
+        <!-- Backgrounds Section -->
+        <section id="backgrounds" class="ds-section" style="margin-bottom: 5rem;">
+            <h2 class="section-title"><i class="ph ph-intersect-three"></i> Backgrounds e Texturas 3D</h2>
+            <p class="section-desc">Padrões de fundo utilizando wireframes cibernéticos, distorções em perspectiva e
+                mescla com matrizes para garantir modernidade autêntica em apresentações de dados.</p>
+
+            <div class="components-showcase grid"
+                style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 2rem;">
+
+                <!-- Glow Institucional (Yellow Gradient) -->
+                <div class="glass-card"
+                    style="padding: 0; overflow: hidden; height: 320px; position: relative; background: linear-gradient(135deg, rgba(255, 202, 40, 0.95) 0%, rgba(200, 150, 0, 0.4) 40%, rgba(10, 10, 12, 1) 100%);">
+                    <div class="card-content"
+                        style="position: absolute; bottom: 20px; left: 20px; text-shadow: 0 4px 20px rgba(0,0,0,0.8);">
+                        <h4 class="font-sansation" style="font-size: 1.5rem; color: #FFF;">Glow Institucional Intenso
+                        </h4>
+                        <p class="font-satoshi text-muted small-text" style="color: rgba(255,255,255,0.8);">Ideal para
+                            áreas de highlight e chamadas decisivas.</p>
+                    </div>
+                </div>
+
+                <!-- Wireframe 3D Plane -->
+                <div class="glass-card" style="padding: 0; overflow: hidden; height: 320px; position: relative;">
+                    <div
+                        style="position: absolute; inset: -40%; background-image: linear-gradient(rgba(255, 255, 255, 0.08) 1px, transparent 1px), linear-gradient(90deg, rgba(255, 255, 255, 0.08) 1px, transparent 1px); background-size: 60px 60px; transform: perspective(600px) rotateX(65deg) translateY(-200px); opacity: 0.6; transform-origin: center top;">
+                    </div>
+                    <div
+                        style="position: absolute; inset: 0; background: linear-gradient(to top, rgba(18, 18, 18, 1) 15%, transparent 100%);">
+                    </div>
+                    <div class="card-content" style="position: absolute; bottom: 20px; left: 20px;">
+                        <h4 class="font-sansation">Plano Digital 3D Base</h4>
+                        <p class="font-satoshi text-muted small-text">Grid holográfico em perspectiva para assoalhos de
+                            tela.</p>
+                    </div>
+                </div>
+
+                <!-- Radial Dark Spot -->
+                <div class="glass-card"
+                    style="padding: 0; overflow: hidden; height: 320px; position: relative; background: radial-gradient(circle at 50% 50%, rgba(255, 255, 255, 0.1) 0%, rgba(10, 10, 12, 1) 60%); display: flex; align-items: center; justify-content: center;">
+                    <h3 class="font-sansation text-white"
+                        style="font-size: 2.5rem; text-shadow: 0 0 40px rgba(255, 255, 255, 0.5);">SPOTLIGHT CENTRAL
+                    </h3>
+                    <div class="card-content" style="position: absolute; bottom: 20px; left: 20px;">
+                        <h4 class="font-sansation">Foco Neutro Central</h4>
+                        <p class="font-satoshi text-muted small-text">Atrai a leitura para dados únicos (como métricas
+                            finais).</p>
+                    </div>
+                </div>
+
+                <!-- Dark Conic Scanner -->
+                <div class="glass-card"
+                    style="padding: 0; overflow: hidden; height: 320px; position: relative; background: #080808;">
+                    <div class="conic-spin"
+                        style="position: absolute; width: 140%; height: 140%; top: -20%; left: -20%; background: conic-gradient(from 180deg at 50% 50%, rgba(255, 202, 40, 0.15) 0deg, transparent 60deg, transparent 300deg, rgba(255, 202, 40, 0.15) 360deg); animation: spin 15s linear infinite;">
+                    </div>
+                    <div
+                        style="position: absolute; inset: 0; backdrop-filter: blur(8px); background: radial-gradient(circle, transparent 20%, #080808 90%);">
+                    </div>
+                    <style>
+                        @keyframes spin {
+                            100% {
+                                transform: rotate(360deg);
+                            }
+                        }
+                    </style>
+                    <div class="card-content" style="position: absolute; bottom: 20px; left: 20px;">
+                        <h4 class="font-sansation text-warning">Radar Tecnológico</h4>
+                        <p class="font-satoshi text-muted small-text">Para fundos com varredura animada suave.</p>
+                    </div>
+                </div>
+
+                <!-- Light Wireframe Grid (Inverted Theme) -->
+                <div class="glass-card"
+                    style="padding: 0; overflow: hidden; height: 320px; position: relative; background: #FFFFFF;">
+                    <div
+                        style="position: absolute; inset: -50%; background-image: linear-gradient(rgba(0, 0, 0, 0.08) 1px, transparent 1px), linear-gradient(90deg, rgba(0, 0, 0, 0.08) 1px, transparent 1px); background-size: 50px 50px; transform: perspective(500px) rotateX(70deg) translateY(100px); opacity: 0.8; transform-origin: center bottom;">
+                    </div>
+                    <div
+                        style="position: absolute; inset: 0; background: radial-gradient(circle at center, transparent 30%, #FFFFFF 90%);">
+                    </div>
+                    <div class="card-content" style="position: absolute; bottom: 20px; left: 20px;">
+                        <h4 class="font-sansation" style="color: #121212;">Holograma Claro (Light Mode)</h4>
+                        <p class="font-satoshi small-text" style="color: #555;">Contraponto visual para telas de
+                            relatório denso e modo dia.</p>
+                    </div>
+                </div>
+
+                <!-- Matrix Data Tunnel (Cylinder Warp) -->
+                <div class="glass-card"
+                    style="padding: 0; overflow: hidden; height: 320px; position: relative; background: #0A0A0C;">
+                    <div
+                        style="position: absolute; width: 200%; height: 200%; top: -50%; left: -50%; background-image: linear-gradient(rgba(255, 202, 40, 0.15) 1px, transparent 1px), linear-gradient(90deg, rgba(255, 202, 40, 0.15) 1px, transparent 1px); background-size: 40px 40px; border-radius: 50%; transform: perspective(800px) rotateX(60deg) scaleY(1.5); box-shadow: inset 0 0 100px #0A0A0C; animation: pulseWarp 4s infinite alternate ease-in-out;">
+                    </div>
+                    <style>
+                        @keyframes pulseWarp {
+                            0% {
+                                transform: perspective(800px) rotateX(60deg) scaleY(1.5) scaleX(1);
+                            }
+
+                            100% {
+                                transform: perspective(800px) rotateX(60deg) scaleY(1.5) scaleX(1.1);
+                            }
+                        }
+                    </style>
+                    <div
+                        style="position: absolute; inset: 0; background: linear-gradient(90deg, #0A0A0C 0%, transparent 20%, transparent 80%, #0A0A0C 100%);">
+                    </div>
+                    <div class="card-content" style="position: absolute; bottom: 20px; left: 20px;">
+                        <h4 class="font-sansation text-warning">Túnel de Dados</h4>
+                        <p class="font-satoshi text-muted small-text">Malha curva transpirando fluxo de arquitetura IA.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Top-Down Ceiling Mesh -->
+                <div class="glass-card" style="padding: 0; overflow: hidden; height: 320px; position: relative;">
+                    <div
+                        style="position: absolute; inset: -40%; background-image: linear-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 1px), linear-gradient(90deg, rgba(255, 255, 255, 0.05) 1px, transparent 1px); background-size: 60px 60px; transform: perspective(600px) rotateX(-65deg) translateY(200px); opacity: 0.5; transform-origin: center top;">
+                    </div>
+                    <div
+                        style="position: absolute; inset: 0; background: linear-gradient(to bottom, transparent 20%, rgba(18, 18, 18, 1) 90%);">
+                    </div>
+                    <div class="card-content" style="position: absolute; bottom: 20px; left: 20px;">
+                        <h4 class="font-sansation">Teto Digital (Ceiling Mesh)</h4>
+                        <p class="font-satoshi text-muted small-text">Grid holográfico invertido originando-se do topo
+                            da tela.</p>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
         <!-- Assets -->
         <section id="assets" class="ds-section">
             <h2 class="section-title"><i class="ph ph-folder-notch"></i> Assets e Iconografia Prediletos</h2>
-            <p class="section-desc">Conjunto premium de ícones sugeridos para compor a interface. Linhas finas, precisas (estilo <i>Phosphor Light</i> ou <i>Regular</i>, combinando com o minimalismo).</p>
+            <p class="section-desc">Conjunto premium de ícones sugeridos para compor a interface. Linhas finas, precisas
+                (estilo <i>Phosphor Light</i> ou <i>Regular</i>, combinando com o minimalismo).</p>
 
             <div class="assets-grid glass-panel">
                 <div class="asset-item" title="Copiar nome">
@@ -248,9 +392,57 @@
                     <i class="ph ph-strategy"></i>
                     <span>strategy</span>
                 </div>
+                <div class="asset-item" title="Copiar nome">
+                    <i class="ph ph-database"></i>
+                    <span>database</span>
+                </div>
+                <div class="asset-item" title="Copiar nome">
+                    <i class="ph ph-cpu"></i>
+                    <span>cpu</span>
+                </div>
+                <div class="asset-item" title="Copiar nome">
+                    <i class="ph ph-code"></i>
+                    <span>code</span>
+                </div>
+                <div class="asset-item" title="Copiar nome">
+                    <i class="ph ph-git-branch"></i>
+                    <span>git-branch</span>
+                </div>
+                <div class="asset-item" title="Copiar nome">
+                    <i class="ph ph-hard-drives"></i>
+                    <span>hard-drives</span>
+                </div>
+                <div class="asset-item" title="Copiar nome">
+                    <i class="ph ph-bug"></i>
+                    <span>bug</span>
+                </div>
+                <div class="asset-item" title="Copiar nome">
+                    <i class="ph ph-money"></i>
+                    <span>money</span>
+                </div>
+                <div class="asset-item" title="Copiar nome">
+                    <i class="ph ph-chart-bar"></i>
+                    <span>chart-bar</span>
+                </div>
+                <div class="asset-item" title="Copiar nome">
+                    <i class="ph ph-magnifying-glass-plus"></i>
+                    <span>magnifying-glass</span>
+                </div>
+                <div class="asset-item" title="Copiar nome">
+                    <i class="ph ph-currency-circle-dollar"></i>
+                    <span>circle-dollar</span>
+                </div>
+                <div class="asset-item" title="Copiar nome">
+                    <i class="ph ph-rocket-launch"></i>
+                    <span>rocket-launch</span>
+                </div>
+                <div class="asset-item" title="Copiar nome">
+                    <i class="ph ph-intersect-three"></i>
+                    <span>intersect-three</span>
+                </div>
             </div>
         </section>
-        
+
         <footer>
             <div class="footer-content font-satoshi">
                 <p>Thundera.IA Design System &copy; 2026. Feito para alta disponibilidade visual e analítica.</p>
@@ -260,4 +452,5 @@
 
     <script src="js/script.js"></script>
 </body>
+
 </html>

@@ -1,40 +1,40 @@
 document.addEventListener('DOMContentLoaded', () => {
-    
+
     // --- Master DOM References ---
     const domSlides = Array.from(document.querySelectorAll('.slide'));
-    
+
     // --- Engine State ---
     let slides = [];
     let totalSlides = 0;
     let currentSlideIndex = 0;
-    
+
     // --- UI Elements ---
     const progressBar = document.getElementById('progress-bar');
     const displayCurrent = document.getElementById('current-slide');
     const displayTotal = document.getElementById('total-slides');
-    
+
     const uiHeader = document.querySelector('.ui-header');
-    
+
     // Map Overlay
     const mapOverlay = document.getElementById('slide-map');
     const mapGrid = document.getElementById('slide-map-grid');
     const btnMap = document.getElementById('btn-map');
     const btnCloseMap = document.getElementById('btn-close-map');
-    
+
     // Triggers
     const btnFullscreen = document.getElementById('btn-fullscreen');
     const btnToggleEye = document.getElementById('btn-toggle-eye');
-    
+
     // New: Company & Study UI
     const companySelector = document.getElementById('company-selector');
     const btnStudyArea = document.getElementById('btn-study-area');
     const studyOverlay = document.getElementById('study-area-overlay');
     const btnCloseStudy = document.getElementById('btn-close-study');
-    
+
     // Navigation Hitboxes
     const prevHitbox = document.getElementById('nav-area-prev');
     const nextHitbox = document.getElementById('nav-area-next');
-    
+
     let isMapOpen = false;
     let isStudyOpen = false;
 
@@ -49,7 +49,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // Recalcula quais slides farão parte da timeline com base no modo
     function compileSlides() {
         const isPresenting = document.body.classList.contains('is-presenting');
-        
+
         // Se isPresenting: filtra .hidden-slide. Senão: pega todos
         slides = domSlides.filter(s => {
             if (isPresenting && s.classList.contains('hidden-slide')) {
@@ -58,12 +58,12 @@ document.addEventListener('DOMContentLoaded', () => {
                 return false;
             }
             // Garante que resetou o display none de quem voltou no modo rascunho
-            s.style.display = ''; 
+            s.style.display = '';
             return true;
         });
 
         totalSlides = slides.length;
-        
+
         // Tratamento de segurança se o cara tava no slide 5, ocultou ele e deu tela cheia (total virou 4)
         // Precisamos realinhar o motor para o array novo
         if (currentSlideIndex >= totalSlides) {
@@ -83,15 +83,15 @@ document.addEventListener('DOMContentLoaded', () => {
 
         slides.forEach((slide, idx) => {
             const title = slide.getAttribute('data-title') || `Slide ${idx + 1}`;
-            
+
             const card = document.createElement('div');
             card.className = 'map-card';
-            
+
             // Verifica status de ocultamento
             const isHidden = slide.classList.contains('hidden-slide');
             const eyeIcon = isHidden ? 'ph-eye-closed' : 'ph-eye';
             const eyeColor = isHidden ? 'color: var(--color-danger); opacity: 1;' : 'opacity: 0.5;';
-            
+
             if (isHidden) {
                 card.style.opacity = '0.5';
                 card.style.borderStyle = 'dashed';
@@ -106,13 +106,13 @@ document.addEventListener('DOMContentLoaded', () => {
                 </div>
                 <span class="map-title">${title}</span>
             `;
-            
+
             // Navegar para o slide ao clicar no card
             card.addEventListener('click', () => {
                 goToSlide(idx);
                 toggleMap(false);
             });
-            
+
             // Alternar visibilidade ao clicar apenas no botão do olho
             const btnEye = card.querySelector('.map-eye-btn');
             btnEye.addEventListener('click', (e) => {
@@ -120,7 +120,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 slide.classList.toggle('hidden-slide');
                 compileSlides(); // Reconstroi o motor e o mapa instantaneamente
             });
-            
+
             mapGrid.appendChild(card);
         });
     }
@@ -130,12 +130,12 @@ document.addEventListener('DOMContentLoaded', () => {
     function toggleSlideVisibility() {
         const currentSlide = slides[currentSlideIndex];
         if (!currentSlide) return;
-        
+
         // Inverte estado do Dom original
         currentSlide.classList.toggle('hidden-slide');
-        
+
         // Recompila (vai atualizar o botão olho e refazer o mapa visualmente)
-        compileSlides(); 
+        compileSlides();
     }
 
     function updateEyeButton() {
@@ -155,15 +155,15 @@ document.addEventListener('DOMContentLoaded', () => {
     // --- Core Navigation Logic ---
     function goToSlide(index) {
         if (index < 0 || index >= totalSlides) return;
-        
+
         currentSlideIndex = index;
         updateDOM();
     }
-    
+
     function nextSlide() {
         if (currentSlideIndex < totalSlides - 1) goToSlide(currentSlideIndex + 1);
     }
-    
+
     function prevSlide() {
         if (currentSlideIndex > 0) goToSlide(currentSlideIndex - 1);
     }
@@ -180,11 +180,11 @@ document.addEventListener('DOMContentLoaded', () => {
         function update() {
             const now = Date.now();
             const progress = Math.min((now - startTime) / duration, 1);
-            
+
             // Easing function for smoother feel (easeOutExpo)
             const easedProgress = progress === 1 ? 1 : 1 - Math.pow(2, -10 * progress);
             const current = Math.floor(easedProgress * target);
-            
+
             scoreEl.textContent = current;
 
             if (progress < 1) {
@@ -198,8 +198,8 @@ document.addEventListener('DOMContentLoaded', () => {
     // --- Company Logic ---
     function populateCompanySelector() {
         if (!companySelector) return;
-        
-        companySelector.innerHTML = companyData.map(c => 
+
+        companySelector.innerHTML = companyData.map(c =>
             `<option value="${c.id}">${c.empresa_nome}</option>`
         ).join('');
     }
@@ -215,21 +215,24 @@ document.addEventListener('DOMContentLoaded', () => {
         if (!data) return;
 
         // 1. Update Slide Dashboard (Slide 2)
-        document.getElementById('dash-empresa-nome').textContent = data.empresa_nome;
-        document.getElementById('dash-decisor-nome').textContent = data.decisor_nome;
-        document.getElementById('dash-decisor-tempo').textContent = data.decisor_tempo_empresa;
-        document.getElementById('dash-faturamento').textContent = data.faturamento_anual;
-        document.getElementById('dash-orcamento').textContent = data.orcamento_ti;
-        document.getElementById('dash-percentual').textContent = data.ti_percentual_receita;
-        document.getElementById('dash-setor').textContent = data.empresa_setor;
+        const dashEmpresaNome = document.getElementById('dash-empresa-nome');
+        if (dashEmpresaNome) {
+            dashEmpresaNome.textContent = data.empresa_nome;
+            document.getElementById('dash-decisor-nome').textContent = data.decisor_nome;
+            document.getElementById('dash-decisor-tempo').textContent = data.decisor_tempo_empresa;
+            document.getElementById('dash-faturamento').textContent = data.faturamento_anual;
+            document.getElementById('dash-orcamento').textContent = data.orcamento_ti;
+            document.getElementById('dash-percentual').textContent = data.ti_percentual_receita;
+            document.getElementById('dash-setor').textContent = data.empresa_setor;
+        }
 
         // 2. Update Study Area (Deep Dive)
         document.getElementById('study-empresa-header').textContent = data.empresa_nome;
         document.getElementById('study-setor-header').textContent = data.empresa_setor;
-        
+
         const grid = document.getElementById('study-details-grid');
         grid.innerHTML = '';
-        
+
         const fields = [
             { label: 'Empresa', val: data.empresa_nome },
             { label: 'Setor', val: data.empresa_setor },
@@ -270,7 +273,7 @@ document.addEventListener('DOMContentLoaded', () => {
         } else {
             studyOverlay.classList.remove('active');
             setTimeout(() => {
-                if(!isStudyOpen) studyOverlay.classList.add('hidden');
+                if (!isStudyOpen) studyOverlay.classList.add('hidden');
             }, 400);
         }
     }
@@ -278,7 +281,7 @@ document.addEventListener('DOMContentLoaded', () => {
     function updateDOM() {
         // 1. Update counter
         displayCurrent.textContent = String(currentSlideIndex + 1).padStart(2, '0');
-        
+
         // 2. Update Progress Bar
         const progressPercentage = totalSlides > 1 ? (currentSlideIndex / (totalSlides - 1)) * 100 : 100;
         progressBar.style.width = `${progressPercentage}%`;
@@ -290,7 +293,7 @@ document.addEventListener('DOMContentLoaded', () => {
         slides.forEach((slide, idx) => {
             if (idx === currentSlideIndex) {
                 slide.classList.add('slide-active');
-                
+
                 // Trigger Slide 10 (Score) specific animation
                 if (slide.id === 'slide-10') {
                     animateScoreCount();
@@ -301,7 +304,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 slide.classList.add('slide-next');
             }
         });
-        
+
         // 5. Update Map Highlights
         const mapCards = mapGrid.querySelectorAll('.map-card');
         mapCards.forEach((card, idx) => {
@@ -316,22 +319,22 @@ document.addEventListener('DOMContentLoaded', () => {
     function updateStorytellingTheme(progress) {
         // Queremos ir de Preto (L=4%) -> Cinza Metálico (L=45%, S=12%) -> Off-white/Cinza Claro (L=94%, S=10%)
         const h = 215; // Tom azulado muito leve para dar o aspecto "Metálico" ao invés de "Barro/Sujo"
-        
+
         // Saturation fixa num tom elegante neutro
-        const s = 12; 
-        
+        const s = 12;
+
         // Aplica uma curva exponencial (Cúbica) no progresso para que ele demore a acelerar
         // Isso mantém a apresentação bem escura até os 70% finais da trajetória, onde a claridade explode
         const easedProgress = Math.pow(progress, 3);
-        
+
         // Lightness sobe suavemente seguindo a curva
         const l = 4 + (easedProgress * 90);
-        
+
         document.documentElement.style.setProperty('--bg-dynamic', `hsl(${h}, ${s}%, ${l}%)`);
-        
+
         // Context Alpha (Para desvanecer hardcoded-bgs à medida que a luz acende)
         document.documentElement.style.setProperty('--context-dark-alpha', (1 - progress) * 0.95);
-        
+
         // Limitador de Legibilidade (Swap Mode)
         // Se a cruzarmos ~65% de Lightness da cor do fundo, ativamos o tema Light (Texto escuro)
         if (l >= 65) {
@@ -344,7 +347,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // --- Overlay Map Controller ---
     function toggleMap(forceState) {
         isMapOpen = forceState !== undefined ? forceState : !isMapOpen;
-        
+
         if (isMapOpen) {
             mapOverlay.classList.add('active');
             uiHeader.style.opacity = '0';
@@ -377,9 +380,9 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     // --- Event Listeners ---
-    
+
     // UI Buttons
-    if(btnToggleEye) btnToggleEye.addEventListener('click', toggleSlideVisibility);
+    if (btnToggleEye) btnToggleEye.addEventListener('click', toggleSlideVisibility);
     btnMap.addEventListener('click', () => toggleMap());
     btnCloseMap.addEventListener('click', () => toggleMap(false));
     btnFullscreen.addEventListener('click', toggleFullscreen);
@@ -393,21 +396,21 @@ document.addEventListener('DOMContentLoaded', () => {
 
     if (btnStudyArea) btnStudyArea.addEventListener('click', () => toggleStudyArea());
     if (btnCloseStudy) btnCloseStudy.addEventListener('click', () => toggleStudyArea(false));
-    
+
     // Hitboxes
     prevHitbox.addEventListener('click', prevSlide);
     nextHitbox.addEventListener('click', nextSlide);
-    
+
     // Keyboard Navigation
     document.addEventListener('keydown', (e) => {
         if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA') return;
 
-        switch(e.key) {
+        switch (e.key) {
             case 'ArrowRight':
             case 'ArrowDown':
             case ' ':
             case 'PageDown':
-                if(!isMapOpen) {
+                if (!isMapOpen) {
                     e.preventDefault();
                     nextSlide();
                 }
@@ -415,7 +418,7 @@ document.addEventListener('DOMContentLoaded', () => {
             case 'ArrowLeft':
             case 'ArrowUp':
             case 'PageUp':
-                if(!isMapOpen) {
+                if (!isMapOpen) {
                     e.preventDefault();
                     prevSlide();
                 }
@@ -431,10 +434,10 @@ document.addEventListener('DOMContentLoaded', () => {
             case 'o':
             case 'O':
                 // Atalho pra habilitar "Oculto" via teclado
-                if(!isMapOpen && !document.fullscreenElement) toggleSlideVisibility();
+                if (!isMapOpen && !document.fullscreenElement) toggleSlideVisibility();
                 break;
             case 'Escape':
-                if(isMapOpen) toggleMap(false);
+                if (isMapOpen) toggleMap(false);
                 break;
             case 'f':
             case 'F':
