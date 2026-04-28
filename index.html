@@ -129,747 +129,6 @@
             </div>
         </section>
 
-        <!-- Slide 02: Quem está por trás -->
-        <section class="slide" id="slide-2" data-title="Quem Somos">
-            <!-- Premium Background Highlight -->
-            <div class="slide-context-bg" style="position: absolute; inset: 0; overflow: hidden; z-index: -2;">
-                <div
-                    style="position: absolute; inset: -40%; background-image: linear-gradient(rgba(255, 202, 40, 0.04) 1px, transparent 1px), linear-gradient(90deg, rgba(255, 202, 40, 0.04) 1px, transparent 1px); background-size: 80px 80px; transform: perspective(800px) rotateX(60deg) translateY(-100px); opacity: 0.8; transform-origin: center top;">
-                </div>
-                <div
-                    style="position: absolute; inset: 0; background: linear-gradient(to top, rgba(18, 18, 18, 1) 15%, transparent 100%);">
-                </div>
-            </div>
-
-            <div class="slide-content flow-layout"
-                style="justify-content: flex-start; padding-top: 5cqh; align-items: flex-start; padding-left: 8cqw; padding-right: 8cqw;">
-
-                <!-- Font & Animation Override -->
-                <style>
-                    @keyframes metricSlideUp {
-                        from {
-                            opacity: 0;
-                            transform: translateY(40px) scale(0.95);
-                        }
-
-                        to {
-                            opacity: 1;
-                            transform: translateY(0) scale(1);
-                        }
-                    }
-
-                    @keyframes numberPopBounce {
-                        0% {
-                            transform: scale(0.3);
-                            opacity: 0;
-                            filter: blur(5px);
-                        }
-
-                        50% {
-                            transform: scale(1.15);
-                            opacity: 1;
-                            filter: blur(0);
-                        }
-
-                        100% {
-                            transform: scale(1);
-                            opacity: 1;
-                        }
-                    }
-
-                    .metric-card-ds {
-                        background: rgba(18, 18, 18, 0.4);
-                        backdrop-filter: blur(12px);
-                        border: 1px solid rgba(255, 202, 40, 0.3);
-                        border-top: 2px solid rgba(255, 202, 40, 1);
-                        padding: 3cqh 0.5cqw;
-                        border-radius: 12px;
-                        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
-                        animation: metricSlideUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) backwards;
-                        transition: transform 0.3s ease, border-color 0.3s ease;
-                        display: flex;
-                        flex-direction: column;
-                        align-items: center;
-                        justify-content: center;
-                        text-align: center;
-                    }
-
-                    .metric-card-ds:hover {
-                        transform: translateY(-5px);
-                        border-color: rgba(255, 202, 40, 1);
-                        background: rgba(255, 202, 40, 0.05);
-                    }
-
-                    .ds-gradient-text {
-                        background: linear-gradient(135deg, #FFCA28 0%, #FFF4D2 100%);
-                        -webkit-background-clip: text;
-                        background-clip: text;
-                        -webkit-text-fill-color: transparent;
-                        display: inline-block;
-                        text-shadow: 0 4px 15px rgba(255, 202, 40, 0.4);
-                        animation: numberPopBounce 0.9s cubic-bezier(0.175, 0.885, 0.32, 1.275) backwards;
-                        line-height: 1;
-                        margin: 0;
-                    }
-
-                    /* Delays for cascading entrance */
-                    #slide-2.slide-active .metric-card-ds:nth-child(1) {
-                        animation-delay: 0.1s;
-                    }
-
-                    #slide-2.slide-active .metric-card-ds:nth-child(1) .ds-gradient-text {
-                        animation-delay: 0.4s;
-                    }
-
-                    #slide-2.slide-active .metric-card-ds:nth-child(2) {
-                        animation-delay: 0.2s;
-                    }
-
-                    #slide-2.slide-active .metric-card-ds:nth-child(2) .ds-gradient-text {
-                        animation-delay: 0.5s;
-                    }
-
-                    #slide-2.slide-active .metric-card-ds:nth-child(3) {
-                        animation-delay: 0.3s;
-                    }
-
-                    #slide-2.slide-active .metric-card-ds:nth-child(3) .ds-gradient-text {
-                        animation-delay: 0.6s;
-                    }
-
-                    #slide-2.slide-active .metric-card-ds:nth-child(4) {
-                        animation-delay: 0.4s;
-                    }
-
-                    #slide-2.slide-active .metric-card-ds:nth-child(4) .ds-gradient-text {
-                        animation-delay: 0.7s;
-                    }
-
-                    #slide-2.slide-active .metric-card-ds:nth-child(5) {
-                        animation-delay: 0.5s;
-                    }
-
-                    #slide-2.slide-active .metric-card-ds:nth-child(5) .ds-gradient-text {
-                        animation-delay: 0.8s;
-                    }
-                </style>
-
-                <!-- Removed yellow line as requested -->
-                <div class="anim-group anim-1 text-left w-full focus-title"
-                    style="padding-left: 0; margin-bottom: 5cqh;">
-                    <h2 class="font-sansation section-heading"
-                        style="text-align: left; margin-bottom: 1cqh; font-size: 3.5cqw;">Quem está por trás do Thundera
-                        IA</h2>
-                    <p class="font-satoshi text-muted" style="text-align: left; font-size: 2.6cqw; line-height: 1.4;">
-                        A Develcode atua há mais de <span class="text-white font-bold">12 anos</span>, comprovando seu
-                        Know-how em gestão de desenvolvimento.
-                    </p>
-                </div>
-
-                <!-- 5 Metrics Row (Animated Boxes from Design System) -->
-                <div class="h-full w-full"
-                    style="display: grid; grid-template-columns: repeat(5, 1fr); gap: 1.5cqw; margin-bottom: 5cqh;">
-
-                    <div class="metric-card-ds">
-                        <h3 class="font-sansation font-bold ds-gradient-text count-up-num" data-target="12"
-                            data-suffix="" style="font-size: 4cqw;">0</h3>
-                        <p class="font-satoshi text-white mt-3" style="font-size: 1.5cqw; font-weight: 500;">Anos de
-                            Mercado</p>
-                    </div>
-
-                    <div class="metric-card-ds">
-                        <h3 class="font-sansation font-bold ds-gradient-text count-up-num" data-target="6"
-                            data-suffix="x" style="font-size: 4cqw;">0x</h3>
-                        <p class="font-satoshi text-white mt-3" style="font-size: 1.5cqw; font-weight: 500;">
-                            Certificados GPTW</p>
-                    </div>
-
-                    <div class="metric-card-ds">
-                        <h3 class="font-sansation font-bold ds-gradient-text count-up-num" data-target="80"
-                            data-suffix="%+" style="font-size: 4cqw;">0%+</h3>
-                        <p class="font-satoshi text-white mt-3" style="font-size: 1.5cqw; font-weight: 500;">NPS de
-                            Satisfação</p>
-                    </div>
-
-                    <div class="metric-card-ds">
-                        <h3 class="font-sansation font-bold ds-gradient-text count-up-num" data-target="100"
-                            data-prefix="+" style="font-size: 4cqw;">+0</h3>
-                        <p class="font-satoshi text-white mt-3" style="font-size: 1.5cqw; font-weight: 500;">Clientes
-                            Atendidos</p>
-                    </div>
-
-                    <div class="metric-card-ds">
-                        <h3 class="font-sansation font-bold ds-gradient-text count-up-num" data-target="500"
-                            data-prefix="+" style="font-size: 4cqw;">+0</h3>
-                        <p class="font-satoshi text-white mt-3" style="font-size: 1.5cqw; font-weight: 500;">Projetos
-                            Entregues</p>
-                    </div>
-
-                </div>
-
-                <script>
-                    document.addEventListener('DOMContentLoaded', () => {
-                        const slide2 = document.getElementById('slide-2');
-                        let counted = false;
-
-                        const animateCountUp = () => {
-                            if (counted) return;
-                            counted = true;
-
-                            const counters = slide2.querySelectorAll('.count-up-num');
-                            counters.forEach(counter => {
-                                const target = +counter.getAttribute('data-target');
-                                const prefix = counter.getAttribute('data-prefix') || '';
-                                const suffix = counter.getAttribute('data-suffix') || '';
-
-                                let current = 0;
-                                // Varied durations for natural effect
-                                const step = Math.ceil(target / 40);
-                                const timer = setInterval(() => {
-                                    current += step;
-                                    if (current >= target) {
-                                        current = target;
-                                        clearInterval(timer);
-                                    }
-                                    counter.innerText = prefix + current + suffix;
-                                }, 30);
-                            });
-                        };
-
-                        const observer = new MutationObserver((mutations) => {
-                            mutations.forEach((mutation) => {
-                                if (mutation.attributeName === 'class' && slide2.classList.contains('slide-active')) {
-                                    // Start counting right as the CSS animation scales them up
-                                    setTimeout(animateCountUp, 300);
-                                } else if (mutation.attributeName === 'class' && !slide2.classList.contains('slide-active')) {
-                                    // Reset counters when leaving slide
-                                    counted = false;
-                                    const counters = slide2.querySelectorAll('.count-up-num');
-                                    counters.forEach(counter => {
-                                        const prefix = prefix = counter.getAttribute('data-prefix') || '';
-                                        const suffix = suffix = counter.getAttribute('data-suffix') || '';
-                                        counter.innerText = prefix + '0' + suffix;
-                                    });
-                                }
-                            });
-                        });
-
-                        if (slide2) observer.observe(slide2, { attributes: true });
-                    });
-                </script>
-
-                <!-- Bottom Split -->
-                <div class="align-split w-full" style="align-items: flex-start; gap: 4cqw;">
-
-                    <!-- Left: O que fazemos -->
-                    <div class="split-left anim-group anim-3" style="flex: 1;">
-                        <h4 class="font-sansation font-bold text-primary mb-3" style="font-size: 2.1cqw;">O que fazemos
-                        </h4>
-
-                        <ul class="font-satoshi text-white"
-                            style="list-style: none; padding: 0; display: flex; flex-direction: column; gap: 2.5cqh; font-size: 1.7cqw;">
-                            <li style="display: flex; align-items: flex-start; gap: 1cqw;">
-                                <div
-                                    style="width: 12px; height: 12px; border-radius: 50%; background: var(--primary); box-shadow: 0 0 8px var(--primary); margin-top: 6px; flex-shrink: 0;">
-                                </div>
-                                <span>Outsourcing de TI</span>
-                            </li>
-                            <li style="display: flex; align-items: flex-start; gap: 1cqw;">
-                                <div
-                                    style="width: 12px; height: 12px; border-radius: 50%; background: var(--primary); box-shadow: 0 0 8px var(--primary); margin-top: 6px; flex-shrink: 0;">
-                                </div>
-                                <span>Desenvolvimento de Produtos Digitais</span>
-                            </li>
-                            <li style="display: flex; align-items: flex-start; gap: 1cqw;">
-                                <div
-                                    style="width: 12px; height: 12px; border-radius: 50%; background: var(--primary); box-shadow: 0 0 8px var(--primary); margin-top: 6px; flex-shrink: 0;">
-                                </div>
-                                <span>Data Analytics e Business Intelligence</span>
-                            </li>
-                            <li style="display: flex; align-items: flex-start; gap: 1cqw;">
-                                <div
-                                    style="width: 12px; height: 12px; border-radius: 50%; background: var(--primary); box-shadow: 0 0 8px var(--primary); margin-top: 6px; flex-shrink: 0;">
-                                </div>
-                                <span>IA Generativa e Agentes Inteligentes</span>
-                            </li>
-                            <li style="display: flex; align-items: flex-start; gap: 1cqw;">
-                                <div
-                                    style="width: 12px; height: 12px; border-radius: 50%; background: var(--primary); box-shadow: 0 0 8px var(--primary); margin-top: 6px; flex-shrink: 0;">
-                                </div>
-                                <span>Cloud Computing e Infraestrutura</span>
-                            </li>
-                        </ul>
-                    </div>
-
-                    <!-- Right: Info Box -->
-                    <div class="split-right anim-group anim-4" style="flex: 1;">
-                        <div class="glass-box highlight-border"
-                            style="border: 1px solid rgba(255,202,40,0.3); border-top: 2px solid rgba(255,202,40,1); padding: 4cqh 3cqw; display: flex; flex-direction: column; gap: 2.5cqh; background: rgba(18,18,18,0.7); backdrop-filter: blur(12px); position: relative; overflow: hidden; border-radius: 12px; box-shadow: 0 10px 40px rgba(0,0,0,0.5);">
-
-                            <!-- Little accent glow -->
-                            <div
-                                style="position: absolute; top: -50px; left: -50px; width: 150px; height: 150px; background: rgba(255,202,40,0.15); filter: blur(40px); border-radius: 50%;">
-                            </div>
-
-                            <div
-                                style="display: flex; align-items: center; gap: 1cqw; margin-bottom: 1cqh; position: relative; z-index: 5;">
-                                <i class="ph-fill ph-lightning text-primary"
-                                    style="font-size: 4cqw; filter: drop-shadow(0 0 10px rgba(255,202,40,0.5));"></i>
-                                <h4 class="font-sansation font-bold text-white leading-tight"
-                                    style="font-size: 1.8cqw;">Especialistas em Transformação Digital</h4>
-                            </div>
-
-                            <p class="font-satoshi text-muted"
-                                style="font-size: 2.2cqw; line-height: 1.5; position: relative; z-index: 5;">
-                                Tecnologia, IA e Outsourcing de TI para seu crescimento previsível.
-                            </p>
-
-                            <p class="font-satoshi text-muted"
-                                style="font-size: 2.2cqw; line-height: 1.5; position: relative; z-index: 5;">
-                                O Thundera IA é o nosso produto mais avançado, nascido da experiência real em nossos
-                                projetos.
-                            </p>
-                        </div>
-                    </div>
-
-                </div>
-
-            </div>
-        </section>
-
-        <!-- Slide 02b: Marcas que Confiam -->
-        <section class="slide" id="slide-2b" data-title="Nossos Clientes">
-            <!-- Premium Background Highlight -->
-            <div class="slide-context-bg" style="position: absolute; inset: 0; overflow: hidden; z-index: -2;">
-                <div
-                    style="position: absolute; top: -20%; right: -10%; width: 50%; height: 50%; background: radial-gradient(circle, rgba(255,202,40,0.08) 0%, transparent 70%);">
-                </div>
-                <div
-                    style="position: absolute; bottom: -20%; left: -10%; width: 50%; height: 50%; background: radial-gradient(circle, rgba(255,202,40,0.05) 0%, transparent 70%);">
-                </div>
-            </div>
-
-            <div class="slide-content flow-layout"
-                style="justify-content: flex-start; padding-top: 5cqh; align-items: flex-start; padding-left: 8cqw; padding-right: 8cqw; padding-bottom: 5cqh; height: 100%;">
-
-                <!-- Header - Removed yellow border for consistency -->
-                <div class="anim-group anim-1 text-left w-full focus-title"
-                    style="padding-left: 0; margin-bottom: 8cqh;">
-                    <h2 class="font-sansation section-heading"
-                        style="text-align: left; margin-bottom: 1cqh; font-size: 3.5cqw;">Marcas que Confiam no Nosso
-                        Trabalho</h2>
-                    <p class="font-satoshi text-muted" style="text-align: left; font-size: 1.8cqw;">
-                        Empresas líderes de mercado que já transformaram operações com a Develcode.
-                    </p>
-                </div>
-
-                <!-- Logos Grid (20 items) -->
-                <style>
-                    .logo-grid {
-                        display: grid;
-                        grid-template-columns: repeat(5, 1fr);
-                        gap: 3cqh 2cqw;
-                        width: 100%;
-                        margin-bottom: 2cqh;
-                    }
-
-                    .logo-card-ds {
-                        background: rgba(25, 25, 25, 0.4);
-                        border: 1px solid rgba(255, 255, 255, 0.05);
-                        border-radius: 8px;
-                        display: flex;
-                        align-items: center;
-                        justify-content: center;
-                        padding: 1.5cqh 2cqw;
-                        backdrop-filter: blur(5px);
-                        transition: all 0.3s ease;
-                        height: 13cqh;
-                        /* Increased height to fill space */
-                    }
-
-                    .logo-card-ds:hover {
-                        background: rgba(255, 202, 40, 0.05);
-                        border-color: rgba(255, 202, 40, 0.3);
-                        transform: translateY(-3px);
-                        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
-                    }
-
-                    .logo-card-ds img {
-                        height: auto;
-                        width: auto;
-                        max-width: 75%;
-                        max-height: 6cqh;
-                        object-fit: contain;
-                        opacity: 0.7;
-                        transition: opacity 0.3s, filter 0.3s, transform 0.3s;
-                        filter: grayscale(100%);
-                    }
-
-                    .logo-card-ds:hover img {
-                        opacity: 1;
-                        filter: grayscale(0%);
-                        transform: scale(1.05);
-                    }
-
-                    .category-tags-carousel {
-                        width: 100%;
-                        overflow: hidden;
-                        margin-top: 6cqh;
-                        position: relative;
-                        padding: 1.5cqh 0;
-                        /* Mask edges for premium look */
-                        -webkit-mask-image: linear-gradient(to right, transparent, black 15%, black 85%, transparent);
-                        mask-image: linear-gradient(to right, transparent, black 15%, black 85%, transparent);
-                    }
-
-                    .category-tags-track {
-                        display: flex;
-                        gap: 2cqw;
-                        width: max-content;
-                        animation: infiniteScroll 40s linear infinite;
-                    }
-
-                    @keyframes infiniteScroll {
-                        0% {
-                            transform: translateX(0);
-                        }
-
-                        100% {
-                            transform: translateX(-50%);
-                        }
-                    }
-
-                    .category-tags-track:hover {
-                        animation-play-state: paused;
-                    }
-
-                    .cat-tag {
-                        border: 1px solid rgba(255, 202, 40, 0.4);
-                        padding: 1.2cqh 3cqw;
-                        font-family: 'Satoshi', sans-serif;
-                        font-size: 1.3cqw;
-                        color: var(--primary);
-                        border-radius: 50px;
-                        /* More rounded for carousel look */
-                        background: rgba(255, 202, 40, 0.05);
-                        transition: all 0.3s;
-                        text-align: center;
-                        white-space: nowrap;
-                        backdrop-filter: blur(5px);
-                    }
-
-                    .cat-tag:hover {
-                        background: var(--primary);
-                        color: #000;
-                        transform: scale(1.05);
-                        box-shadow: 0 0 20px rgba(255, 202, 40, 0.3);
-                    }
-
-                    /* Cascading for logos */
-                    #slide-2b.slide-active .anim-logo {
-                        animation: fadeInUpLogo 0.6s cubic-bezier(0.16, 1, 0.3, 1) backwards;
-                    }
-
-                    @keyframes fadeInUpLogo {
-                        from {
-                            opacity: 0;
-                            transform: translateY(20px) scale(0.95);
-                        }
-
-                        to {
-                            opacity: 1;
-                            transform: translateY(0) scale(1);
-                        }
-                    }
-
-                    /* Boost specifically for logos lacking dimensions */
-                    .logo-card-ds.logo-boost img {
-                        max-width: 100% !important;
-                        max-height: 8.5cqh !important;
-                        transform: scale(1.6);
-                    }
-
-                    .logo-card-ds.logo-boost.logo-extra img {
-                        transform: scale(1.9);
-                    }
-
-                    .logo-card-ds.logo-boost.logo-extra:hover img {
-                        transform: scale(2.05);
-                    }
-
-                    .logo-card-ds.logo-soft img {
-                        transform: scale(1.3);
-                    }
-                </style>
-
-                <div class="logo-grid anim-group anim-2">
-                    <div class="logo-card-ds anim-logo logo-boost" style="animation-delay: 0.1s;"><img
-                            src="assets/Logo-Leroy-Merlin---Branco.png" alt="Leroy Merlin"></div>
-                    <div class="logo-card-ds anim-logo logo-boost logo-extra" style="animation-delay: 0.15s;"><img
-                            src="assets/Logo RD Saúde - Branca.png" alt="RD Saúde"></div>
-                    <div class="logo-card-ds anim-logo logo-boost logo-extra" style="animation-delay: 0.2s;"><img
-                            src="assets/Riachuelo---Logo-Branca.png" alt="Riachuelo"></div>
-                    <div class="logo-card-ds anim-logo logo-boost logo-extra" style="animation-delay: 0.25s;"><img
-                            src="assets/Logo Pernambucanas - Branco.png" alt="Pernambucanas"></div>
-                    <div class="logo-card-ds anim-logo logo-boost" style="animation-delay: 0.3s;"><img
-                            src="assets/Logo Tokiomarine Branco.png" alt="Tokio Marine"></div>
-
-                    <div class="logo-card-ds anim-logo logo-soft" style="animation-delay: 0.35s;"><img
-                            src="assets/logo-unibanco-white.png" alt="Instituto Unibanco"></div>
-                    <!-- Epharma NOT boosted -->
-                    <div class="logo-card-ds anim-logo" style="animation-delay: 0.4s;"><img
-                            src="assets/Logo-Epharma---Beanco.png" alt="Epharma"></div>
-                    <div class="logo-card-ds anim-logo logo-boost logo-extra" style="animation-delay: 0.45s;"><img
-                            src="assets/Obramax.png" alt="Obramax"></div>
-                    <div class="logo-card-ds anim-logo logo-boost logo-extra" style="animation-delay: 0.5s;"><img
-                            src="assets/Logo-Boticário---Branco.png" alt="O Boticário"></div>
-                    <div class="logo-card-ds anim-logo logo-boost logo-extra" style="animation-delay: 0.55s;"><img
-                            src="assets/Sodexo.png" alt="Sodexo"></div>
-
-                    <!-- Dalca NOT boosted -->
-                    <div class="logo-card-ds anim-logo" style="animation-delay: 0.6s;"><img
-                            src="assets/Logo-Dalca---Brancp.png" alt="Dalca"></div>
-                    <div class="logo-card-ds anim-logo logo-boost logo-extra" style="animation-delay: 0.65s;"><img
-                            src="assets/LFC---Logo-Branca.png" alt="LFC"></div>
-                    <div class="logo-card-ds anim-logo logo-boost logo-extra" style="animation-delay: 0.7s;"><img
-                            src="assets/Logo-CNBB---Brancp.png" alt="CNBB"></div>
-                    <div class="logo-card-ds anim-logo logo-boost logo-extra" style="animation-delay: 0.75s;"><img
-                            src="assets/Logo-Osigu---Branca.png" alt="Osigu"></div>
-                    <!-- Copasul NOT boosted -->
-                    <div class="logo-card-ds anim-logo" style="animation-delay: 0.8s;"><img
-                            src="assets/LOGO COPASUL branco.png" alt="Copasul"></div>
-
-                    <div class="logo-card-ds anim-logo logo-boost logo-extra" style="animation-delay: 0.85s;"><img
-                            src="assets/SBK.png" alt="SBK"></div>
-                    <div class="logo-card-ds anim-logo logo-boost logo-extra" style="animation-delay: 0.9s;"><img
-                            src="assets/Neomot.png" alt="Neomot"></div>
-                    <div class="logo-card-ds anim-logo logo-boost" style="animation-delay: 0.95s;"><img
-                            src="assets/bp8.png" alt="bp8"></div>
-                    <!-- Bertolini NOT boosted -->
-                    <div class="logo-card-ds anim-logo" style="animation-delay: 1.0s;"><img
-                            src="assets/Bertolini - Logo Branca.png" alt="Grupo Bertolini"></div>
-                    <div class="logo-card-ds anim-logo logo-boost logo-extra" style="animation-delay: 1.05s;"><img
-                            src="assets/Logo-Fedrizzi-Seguros.png" alt="Fedrizzi Seguros"></div>
-                </div>
-
-                <!-- Footer Infinite Ticker -->
-                <div class="category-tags-carousel anim-group anim-3" style="animation-delay: 1.0s;">
-                    <div class="category-tags-track">
-                        <!-- Full Set -->
-                        <div class="cat-tag">Varejo</div>
-                        <div class="cat-tag">Saúde</div>
-                        <div class="cat-tag">Financeiro</div>
-                        <div class="cat-tag">Seguros</div>
-                        <div class="cat-tag">Educação</div>
-                        <div class="cat-tag">Tecnologia</div>
-                        <div class="cat-tag">Agronegócio</div>
-                        <!-- Duplicated Set for Seamless Loop -->
-                        <div class="cat-tag">Varejo</div>
-                        <div class="cat-tag">Saúde</div>
-                        <div class="cat-tag">Financeiro</div>
-                        <div class="cat-tag">Seguros</div>
-                        <div class="cat-tag">Educação</div>
-                        <div class="cat-tag">Tecnologia</div>
-                        <div class="cat-tag">Agronegócio</div>
-                    </div>
-                </div>
-
-
-
-
-
-            </div>
-        </section>
-
-
-        <!-- Slide 02c: Cases de Impacto -->
-        <section class="slide" id="slide-2c" data-title="Cases de Impacto">
-            <div class="slide-context-bg" style="position: absolute; inset: 0; overflow: hidden; z-index: -2;">
-                <!-- Subtle grid or background decoration -->
-                <div
-                    style="position: absolute; inset: 0; background: radial-gradient(circle at 50% 50%, rgba(255,202,40,0.05) 0%, transparent 60%);">
-                </div>
-            </div>
-
-            <div class="slide-content flow-layout" style="justify-content: flex-start; padding-top: 5cqh;">
-                <!-- Header -->
-                <div class="anim-group anim-1 text-left w-full focus-title" style="margin-bottom: 4cqh;">
-                    <h2 class="font-sansation section-heading">Cases de Impacto</h2>
-                    <p class="font-satoshi text-muted" style="font-size: 2.4cqw;">Resultados reais que comprovam nossa
-                        capacidade de transformar operações.</p>
-                </div>
-
-                <!-- Cases Grid -->
-                <div class="align-split w-full" style="gap: 2cqw; align-items: stretch;">
-
-                    <!-- Case 1: Leroy Merlin Instala -->
-                    <div class="glass-box anim-group anim-2"
-                        style="flex: 1; padding: 3cqh 2cqw; border-top: 3px solid var(--primary); display: flex; flex-direction: column; gap: 2cqh; background: rgba(18,18,18,0.7); backdrop-filter: blur(14px);">
-                        <div
-                            style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 1cqh;">
-                            <span class="font-satoshi text-primary uppercase"
-                                style="font-size: 0.9cqw; letter-spacing: 2px; font-weight: 700;">Leroy Merlin</span>
-                            <img src="assets/Logo-Leroy-Merlin---Branco.png" alt="Leroy Merlin"
-                                style="height: 5cqh; opacity: 0.9; object-fit: contain;">
-                        </div>
-
-                        <h4 class="font-sansation text-white"
-                            style="font-size: 1.7cqw; line-height: 1.2; margin-bottom: 1cqh;">Proj. Instala — Venda de
-                            Serviços Digital</h4>
-
-                        <div style="margin-bottom: 2cqh;">
-                            <span class="font-satoshi text-primary uppercase font-bold"
-                                style="font-size: 0.9cqw; letter-spacing: 1.5px; display: block; margin-bottom: 0.8cqh; opacity: 0.8;">O
-                                Desafio</span>
-                            <p class="font-satoshi text-muted" style="font-size: 1.2cqw; line-height: 1.4;">Criação de
-                                canal digital de serviços integrado ao ERP para substituir processos 100% manuais.</p>
-                        </div>
-
-                        <div style="margin-top: auto;">
-                            <span class="font-satoshi text-primary uppercase font-bold"
-                                style="font-size: 0.9cqw; letter-spacing: 1.5px; display: block; margin-bottom: 1.5cqh; opacity: 0.8;">Resultados
-                                Obtidos</span>
-
-                            <div style="display: flex; flex-direction: column; gap: 1.2cqh;">
-                                <div
-                                    style="display: flex; align-items: center; justify-content: space-between; background: rgba(255,202,40,0.08); padding: 1cqh 1.2cqw; border-radius: 8px;">
-                                    <span class="font-satoshi text-white" style="font-size: 1.1cqw;">Serviços
-                                        Realizados</span>
-                                    <span class="font-sansation text-primary font-bold"
-                                        style="font-size: 1.8cqw;">300.000</span>
-                                </div>
-                                <div
-                                    style="display: flex; align-items: center; justify-content: space-between; background: rgba(255,202,40,0.08); padding: 1cqh 1.2cqw; border-radius: 8px;">
-                                    <span class="font-satoshi text-white" style="font-size: 1.1cqw;">Profissionais
-                                        Cadastrados</span>
-                                    <span class="font-sansation text-primary font-bold"
-                                        style="font-size: 1.8cqw;">2.000</span>
-                                </div>
-                                <div
-                                    style="display: flex; align-items: center; justify-content: space-between; background: rgba(255,202,40,0.08); padding: 1cqh 1.2cqw; border-radius: 8px;">
-                                    <span class="font-satoshi text-white" style="font-size: 1.1cqw;">Categorias de
-                                        Serviço</span>
-                                    <span class="font-sansation text-primary font-bold"
-                                        style="font-size: 1.8cqw;">84+</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- New Case 2: Grande Empresa Varejo/Saúde -->
-                    <div class="glass-box anim-group anim-3"
-                        style="flex: 1; padding: 3cqh 2cqw; border-top: 3px solid var(--primary); display: flex; flex-direction: column; gap: 2cqh; background: rgba(18,18,18,0.7); backdrop-filter: blur(14px);">
-                        <div
-                            style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 1cqh;">
-                            <span class="font-satoshi text-primary uppercase"
-                                style="font-size: 0.9cqw; letter-spacing: 2px; font-weight: 700;">Varejo & Saúde</span>
-                            <div
-                                style="width: 5cqh; height: 5cqh; background: rgba(255,202,40,0.1); border-radius: 50%; display: flex; align-items: center; justify-content: center; border: 1px solid rgba(255,202,40,0.3);">
-                                <i class="ph-bold ph-shopping-cart text-primary" style="font-size: 2.5cqh;"></i>
-                            </div>
-                        </div>
-
-                        <h4 class="font-sansation text-white"
-                            style="font-size: 1.7cqw; line-height: 1.2; margin-bottom: 1cqh;">Reengenharia de App e
-                            Plataforma</h4>
-
-                        <div style="margin-bottom: 2cqh;">
-                            <span class="font-satoshi text-primary uppercase font-bold"
-                                style="font-size: 0.9cqw; letter-spacing: 1.5px; display: block; margin-bottom: 0.8cqh; opacity: 0.8;">O
-                                Desafio</span>
-                            <p class="font-satoshi text-muted" style="font-size: 1.2cqw; line-height: 1.4;">Modernização
-                                de app com 4M+ usuários em stack obsoleta sem interrupção crítica de operação.</p>
-                        </div>
-
-                        <div style="margin-top: auto;">
-                            <span class="font-satoshi text-primary uppercase font-bold"
-                                style="font-size: 0.9cqw; letter-spacing: 1.5px; display: block; margin-bottom: 1.5cqh; opacity: 0.8;">Resultados
-                                Obtidos</span>
-
-                            <div style="display: flex; flex-direction: column; gap: 1.2cqh;">
-                                <div
-                                    style="display: flex; align-items: center; justify-content: space-between; background: rgba(255,202,40,0.12); padding: 1cqh 1.2cqw; border-radius: 8px; border: 1px solid rgba(255,202,40,0.2);">
-                                    <span class="font-satoshi text-white" style="font-size: 1.1cqw;">Net Satisfaction
-                                        Score</span>
-                                    <span class="font-sansation text-primary font-bold"
-                                        style="font-size: 1.8cqw;">+90%</span>
-                                </div>
-                                <div
-                                    style="display: flex; align-items: center; justify-content: space-between; background: rgba(255,202,40,0.12); padding: 1cqh 1.2cqw; border-radius: 8px; border: 1px solid rgba(255,202,40,0.2);">
-                                    <span class="font-satoshi text-white" style="font-size: 1.1cqw;">Data Load
-                                        Time</span>
-                                    <span class="font-sansation text-primary font-bold"
-                                        style="font-size: 1.8cqw;">-80%</span>
-                                </div>
-                                <div
-                                    style="display: flex; align-items: center; justify-content: space-between; background: rgba(255,202,40,0.12); padding: 1cqh 1.2cqw; border-radius: 8px; border: 1px solid rgba(255,202,40,0.2);">
-                                    <span class="font-satoshi text-white" style="font-size: 1.1cqw;">Segurança e
-                                        Vulnerabilidade</span>
-                                    <span class="font-sansation text-primary font-bold"
-                                        style="font-size: 1.8cqw;">Mitigação Total</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Case 3: Tokio Marine -->
-                    <div class="glass-box anim-group anim-4"
-                        style="flex: 1; padding: 3cqh 2cqw; border-top: 3px solid var(--primary); display: flex; flex-direction: column; gap: 2cqh; background: rgba(18,18,18,0.7); backdrop-filter: blur(14px);">
-                        <div
-                            style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 1cqh;">
-                            <span class="font-satoshi text-primary uppercase"
-                                style="font-size: 0.9cqw; letter-spacing: 2px; font-weight: 700;">Tokio Marine</span>
-                            <img src="assets/Logo Tokiomarine Branco.png" alt="Tokio Marine"
-                                style="height: 5cqh; opacity: 0.9; object-fit: contain;">
-                        </div>
-
-                        <h4 class="font-sansation text-white"
-                            style="font-size: 1.7cqw; line-height: 1.2; margin-bottom: 1cqh;">App de Atendimento a
-                            Sinistros</h4>
-
-                        <div style="margin-bottom: 2cqh;">
-                            <span class="font-satoshi text-primary uppercase font-bold"
-                                style="font-size: 0.9cqw; letter-spacing: 1.5px; display: block; margin-bottom: 0.8cqh; opacity: 0.8;">O
-                                Desafio</span>
-                            <p class="font-satoshi text-muted" style="font-size: 1.2cqw; line-height: 1.4;">Redução de
-                                gargalos operacionais no atendimento telefônico via automação digital.</p>
-                        </div>
-
-                        <div style="margin-top: auto;">
-                            <span class="font-satoshi text-primary uppercase font-bold"
-                                style="font-size: 0.9cqw; letter-spacing: 1.5px; display: block; margin-bottom: 1.5cqh; opacity: 0.8;">Resultados
-                                Obtidos</span>
-
-                            <div style="display: flex; flex-direction: column; gap: 1.2cqh;">
-                                <div
-                                    style="display: flex; align-items: center; justify-content: space-between; background: rgba(255,202,40,0.08); padding: 1cqh 1.2cqw; border-radius: 8px;">
-                                    <span class="font-satoshi text-white" style="font-size: 1.1cqw;">Custos
-                                        Operacionais</span>
-                                    <span class="font-sansation text-primary font-bold"
-                                        style="font-size: 1.8cqw;">-30%</span>
-                                </div>
-                                <div
-                                    style="display: flex; align-items: center; justify-content: space-between; background: rgba(255,202,40,0.08); padding: 1cqh 1.2cqw; border-radius: 8px;">
-                                    <span class="font-satoshi text-white" style="font-size: 1.1cqw;">Agilidade no
-                                        Atendimento</span>
-                                    <span class="font-sansation text-primary font-bold"
-                                        style="font-size: 1.8cqw;">Elevada</span>
-                                </div>
-                                <div
-                                    style="display: flex; align-items: center; justify-content: space-between; background: rgba(255,202,40,0.08); padding: 1cqh 1.2cqw; border-radius: 8px;">
-                                    <span class="font-satoshi text-white" style="font-size: 1.1cqw;">Erros
-                                        Manuais</span>
-                                    <span class="font-sansation text-primary font-bold"
-                                        style="font-size: 1.8cqw;">Extintos</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                </div>
-            </div>
-        </section>
-
         <!-- Slide 03: A Ilusão do Valor -->
         <section class="slide" id="slide-3" data-title="A Ilusão do Valor">
             <!-- PREMIUM UPGRADE: Matrix Data Tunnel -->
@@ -1110,245 +369,6 @@
 
             <div class="slide-content flow-layout" style="justify-content: flex-start; padding-top: 2cqh;">
 
-                <style>
-                    /* Hover Animations for Core Analytics */
-                    .box-seniority:hover .ph-star {
-                        animation: spinAndGlow 1s ease-in-out infinite;
-                        color: var(--primary) !important;
-                    }
-
-                    @keyframes spinAndGlow {
-
-                        0%,
-                        100% {
-                            transform: scale(1);
-                            filter: drop-shadow(0 0 5px var(--primary));
-                        }
-
-                        50% {
-                            transform: scale(1.15) rotate(10deg);
-                            filter: drop-shadow(0 0 15px var(--primary));
-                        }
-                    }
-
-                    .box-sentiment:hover .ph-heartbeat {
-                        animation: heartbeat 0.8s ease-in-out infinite;
-                        color: #ef4444 !important;
-                        filter: drop-shadow(0 0 10px #ef4444);
-                    }
-
-                    @keyframes heartbeat {
-
-                        0%,
-                        100% {
-                            transform: scale(1);
-                        }
-
-                        20% {
-                            transform: scale(1.25);
-                        }
-
-                        40% {
-                            transform: scale(1.1);
-                        }
-
-                        60% {
-                            transform: scale(1.3);
-                        }
-                    }
-
-                    .box-social:hover .ph-linkedin-logo {
-                        animation: shakeVibrate 0.3s ease-in-out infinite;
-                        color: #0077b5 !important;
-                        filter: drop-shadow(0 0 10px #0077b5);
-                    }
-
-                    @keyframes shakeVibrate {
-
-                        0%,
-                        100% {
-                            transform: translateX(0);
-                        }
-
-                        25% {
-                            transform: translateX(-2px) rotate(-5deg);
-                        }
-
-                        75% {
-                            transform: translateX(2px) rotate(5deg);
-                        }
-                    }
-
-                    .box-sprint:hover .ph-rocket-launch {
-                        animation: launchUp 1s ease-in-out infinite;
-                        color: #4CAF50 !important;
-                        filter: drop-shadow(0 0 10px #4CAF50);
-                    }
-
-                    @keyframes launchUp {
-                        0% {
-                            transform: translateY(0) scale(1);
-                        }
-
-                        50% {
-                            transform: translateY(-8px) scale(1.1);
-                        }
-
-                        100% {
-                            transform: translateY(0) scale(1);
-                        }
-                    }
-
-                    .box-capacity:hover .ph-battery-charging {
-                        animation: batteryPulse 1.5s ease-in-out infinite;
-                        color: var(--primary) !important;
-                        filter: drop-shadow(0 0 10px var(--primary));
-                    }
-
-                    @keyframes batteryPulse {
-
-                        0%,
-                        100% {
-                            opacity: 1;
-                            transform: scale(1);
-                        }
-
-                        50% {
-                            opacity: 0.6;
-                            transform: scale(0.95);
-                        }
-                    }
-
-                    .box-quality:hover .ph-shield-check {
-                        animation: shieldBounce 1s cubic-bezier(0.36, 0, 0.66, -0.56) infinite;
-                        color: #FF9900 !important;
-                        filter: drop-shadow(0 0 10px #FF9900);
-                    }
-
-                    @keyframes shieldBounce {
-
-                        0%,
-                        100% {
-                            transform: scale(1);
-                        }
-
-                        50% {
-                            transform: scale(1.15);
-                        }
-                    }
-
-                    .box-ai:hover .ph-robot {
-                        animation: levitate 1.5s ease-in-out infinite;
-                        color: var(--primary) !important;
-                        filter: drop-shadow(0 0 15px var(--primary));
-                    }
-
-                    @keyframes levitate {
-
-                        0%,
-                        100% {
-                            transform: translateY(0);
-                        }
-
-                        50% {
-                            transform: translateY(-8px);
-                        }
-                    }
-
-                    .box-commits:hover .ph-git-merge {
-                        animation: expandNode 1s ease-in-out infinite;
-                        color: var(--warning) !important;
-                        filter: drop-shadow(0 0 10px var(--warning));
-                    }
-
-                    @keyframes expandNode {
-
-                        0%,
-                        100% {
-                            transform: scale(1);
-                        }
-
-                        50% {
-                            transform: scale(1.15);
-                        }
-                    }
-
-                    .box-rebounds:hover .ph-arrows-clockwise {
-                        animation: spinSlow 1.5s linear infinite;
-                        color: #FF9900 !important;
-                        filter: drop-shadow(0 0 10px #FF9900);
-                    }
-
-                    @keyframes spinSlow {
-                        from {
-                            transform: rotate(0deg);
-                        }
-
-                        to {
-                            transform: rotate(360deg);
-                        }
-                    }
-
-                    .box-time:hover .ph-hourglass-high {
-                        animation: flipTimer 2s ease-in-out infinite;
-                        color: #4CAF50 !important;
-                        filter: drop-shadow(0 0 10px #4CAF50);
-                    }
-
-                    @keyframes flipTimer {
-                        0% {
-                            transform: rotate(0deg);
-                        }
-
-                        40%,
-                        100% {
-                            transform: rotate(180deg);
-                        }
-                    }
-
-                    .box-score:hover .ph-medal {
-                        animation: ultraGlow 1s alternate infinite;
-                        color: var(--primary) !important;
-                    }
-
-                    @keyframes ultraGlow {
-                        0% {
-                            transform: scale(1);
-                            filter: drop-shadow(0 0 10px rgba(59, 130, 246, 0.6));
-                        }
-
-                        100% {
-                            transform: scale(1.2);
-                            filter: drop-shadow(0 0 30px rgba(59, 130, 246, 1));
-                            color: #FFF !important;
-                        }
-                    }
-
-                    /* Enhanced standard icon default styles */
-                    .box-icon-wrapper {
-                        height: 6cqh;
-                        display: flex;
-                        align-items: center;
-                        justify-content: center;
-                        margin-bottom: 2cqh;
-                    }
-
-                    .box-icon-wrapper i {
-                        font-size: 4.5cqw;
-                        color: rgba(255, 255, 255, 0.7);
-                        transition: all 0.3s ease;
-                    }
-
-                    /* Typography Adjustments requested by User */
-                    .text-desc,
-                    .slide-content p.text-muted {
-                        font-size: 1.65cqw !important;
-                    }
-
-                    .focus-title p.text-muted {
-                        margin-top: 0.2cqh !important;
-                    }
-                </style>
 
                 <div class="anim-group anim-1 text-center w-full focus-title">
                     <h2 class="font-sansation section-heading" style="margin-bottom: 0;">O Core Analytics:<br><span
@@ -1750,19 +770,19 @@
                                     onmouseover="this.style.background='rgba(255,255,255,0.04)'"
                                     onmouseout="this.style.background='transparent'">
                                     <td class="py-6 px-6 text-white"
-                                        style="font-size: 1.4cqw; border-right: 1px solid rgba(255,255,255,0.05);">Dev A
+                                        style="font-size: 1.5cqw; border-right: 1px solid rgba(255,255,255,0.05);">Dev A
                                     </td>
                                     <td class="py-6 px-6 text-muted"
-                                        style="font-size: 1.4cqw; border-right: 1px solid rgba(255,255,255,0.05);">
-                                        Plênior
+                                        style="font-size: 1.5cqw; border-right: 1px solid rgba(255,255,255,0.05);">
+                                        Pleno
                                     </td>
                                     <td class="py-6 px-6 font-sansation font-bold"
                                         style="font-size: 2.8cqw; color: #4CAF50; border-right: 1px solid rgba(255,255,255,0.05); text-shadow: 0 0 10px rgba(76, 175, 80, 0.3);">
                                         92</td>
                                     <td class="py-6 px-6 font-bold"
-                                        style="font-size: 1.4cqw; border-right: 1px solid rgba(255,255,255,0.05); color: #4CAF50;">
+                                        style="font-size: 1.5cqw; border-right: 1px solid rgba(255,255,255,0.05); color: #4CAF50;">
                                         Sênior Inicial</td>
-                                    <td class="py-6 px-6 font-bold" style="font-size: 1.4cqw; color: #4CAF50;">Alta
+                                    <td class="py-6 px-6 font-bold" style="font-size: 1.5cqw; color: #4CAF50;">Alta
                                         Performance</td>
                                 </tr>
                                 <!-- Row 2 -->
@@ -1771,18 +791,18 @@
                                     onmouseover="this.style.background='rgba(255,255,255,0.06)'"
                                     onmouseout="this.style.background='rgba(255,255,255,0.02)'">
                                     <td class="py-6 px-6 text-white"
-                                        style="font-size: 1.4cqw; border-right: 1px solid rgba(255,255,255,0.05);">Dev B
+                                        style="font-size: 1.5cqw; border-right: 1px solid rgba(255,255,255,0.05);">Dev B
                                     </td>
                                     <td class="py-6 px-6 text-muted"
-                                        style="font-size: 1.4cqw; border-right: 1px solid rgba(255,255,255,0.05);">
+                                        style="font-size: 1.5cqw; border-right: 1px solid rgba(255,255,255,0.05);">
                                         Sênior</td>
                                     <td class="py-6 px-6 font-sansation font-bold"
                                         style="font-size: 2.8cqw; color: #9CA3AF; border-right: 1px solid rgba(255,255,255,0.05);">
                                         85</td>
                                     <td class="py-6 px-6 font-bold"
-                                        style="font-size: 1.4cqw; border-right: 1px solid rgba(255,255,255,0.05); color: #9CA3AF;">
+                                        style="font-size: 1.5cqw; border-right: 1px solid rgba(255,255,255,0.05); color: #9CA3AF;">
                                         Sênior Final</td>
-                                    <td class="py-6 px-6 font-bold" style="font-size: 1.4cqw; color: #9CA3AF;">Esperado
+                                    <td class="py-6 px-6 font-bold" style="font-size: 1.5cqw; color: #9CA3AF;">Esperado
                                     </td>
                                 </tr>
                                 <!-- Row 3 -->
@@ -1790,10 +810,10 @@
                                     onmouseover="this.style.background='rgba(255, 202, 40, 0.05)'"
                                     onmouseout="this.style.background='transparent'">
                                     <td class="py-6 px-6 text-white"
-                                        style="font-size: 1.4cqw; border-right: 1px solid rgba(255,255,255,0.05);">Dev C
+                                        style="font-size: 1.5cqw; border-right: 1px solid rgba(255,255,255,0.05);">Dev C
                                     </td>
                                     <td class="py-6 px-6 text-muted"
-                                        style="font-size: 1.4cqw; border-right: 1px solid rgba(255,255,255,0.05);">
+                                        style="font-size: 1.5cqw; border-right: 1px solid rgba(255,255,255,0.05);">
                                         Sênior</td>
                                     <td class="py-6 px-6 font-sansation font-bold"
                                         style="font-size: 2.8cqw; color: var(--primary); border-right: 1px solid rgba(255,255,255,0.05); text-shadow: 0 0 10px rgba(255, 202, 40, 0.3);">
@@ -1801,9 +821,9 @@
                                             style="font-size: 2cqw; vertical-align: middle; margin-left: 0.5cqw; filter: drop-shadow(0 0 5px rgba(255, 202, 40, 0.5));"></i>
                                     </td>
                                     <td class="py-6 px-6 font-bold"
-                                        style="font-size: 1.4cqw; border-right: 1px solid rgba(255,255,255,0.05); color: var(--primary);">
-                                        Plênior final</td>
-                                    <td class="py-6 px-6 font-bold" style="font-size: 1.4cqw; color: var(--primary);">
+                                        style="font-size: 1.5cqw; border-right: 1px solid rgba(255,255,255,0.05); color: var(--primary);">
+                                        Pleno final</td>
+                                    <td class="py-6 px-6 font-bold" style="font-size: 1.5cqw; color: var(--primary);">
                                         Abaixo da Média</td>
                                 </tr>
                             </tbody>
@@ -1894,7 +914,7 @@
                                     style="width: 4cqw; height: 1px; background: linear-gradient(90deg, #60a5fa, transparent);">
                                 </div>
                                 <div class="font-sansation font-bold text-primary"
-                                    style="font-size: 1.4cqw; letter-spacing: 3px; border-left: 3px solid #60a5fa; padding-left: 1cqw;">
+                                    style="font-size: 1.5cqw; letter-spacing: 3px; border-left: 3px solid #60a5fa; padding-left: 1cqw;">
                                     THUNDERA<br>
                                     <span class="text-white opacity-60"
                                         style="font-size: 1cqw; letter-spacing: 1px;">ESCUDO DE DADOS</span>
@@ -2022,7 +1042,7 @@
 
                         <div class="text-center mt-2"
                             style="padding: 1cqh 2cqw; width: 100%; border-bottom: 2px solid rgba(255,255,255,0.1);">
-                            <span class="font-sansation font-bold text-white" style="font-size: 1.4cqw;">5 Seniores =
+                            <span class="font-sansation font-bold text-white" style="font-size: 1.5cqw;">5 Seniores =
                                 OPEX 100%</span>
                         </div>
                     </div>
@@ -2058,7 +1078,7 @@
 
                         <div class="text-center mt-2"
                             style="padding: 1cqh 2cqw; width: 100%; border-bottom: 2px solid rgba(76, 175, 80, 0.5);">
-                            <span class="font-sansation font-bold text-white" style="font-size: 1.4cqw;">4
+                            <span class="font-sansation font-bold text-white" style="font-size: 1.5cqw;">4
                                 Plenos/Seniores = OPEX <span style="color: #4CAF50;">-20%</span></span>
                         </div>
 
@@ -2191,104 +1211,758 @@
             </div>
         </section>
 
-        <!-- Slide 13b: Investimento -->
-        <section class="slide" id="slide-pricing" data-title="Investimento">
+        <!-- Slide 02: Quem Somos – Develcode -->
+        <section class="slide" id="slide-2" data-title="Quem Somos">
+            <!-- Premium Background -->
             <div class="slide-context-bg" style="position: absolute; inset: 0; overflow: hidden; z-index: -2;">
                 <div
-                    style="position: absolute; top: -10%; right: -5%; width: 40%; height: 40%; background: radial-gradient(circle, rgba(255,202,40,0.06) 0%, transparent 70%);">
+                    style="position: absolute; inset: -40%; background-image: linear-gradient(rgba(255, 202, 40, 0.04) 1px, transparent 1px), linear-gradient(90deg, rgba(255, 202, 40, 0.04) 1px, transparent 1px); background-size: 80px 80px; transform: perspective(800px) rotateX(60deg) translateY(-100px); opacity: 0.8; transform-origin: center top;">
                 </div>
                 <div
-                    style="position: absolute; bottom: -10%; left: -5%; width: 40%; height: 40%; background: radial-gradient(circle, rgba(255,202,40,0.04) 0%, transparent 70%);">
+                    style="position: absolute; inset: 0; background: linear-gradient(to top, rgba(18, 18, 18, 1) 15%, transparent 100%);">
+                </div>
+            </div>
+
+            <div class="slide-content flow-layout"
+                style="justify-content: center; padding-top: 8cqh; align-items: flex-start; padding-left: 10cqw; padding-right: 10cqw;">
+
+                <style>
+                    @keyframes metricSlideUp {
+                        from {
+                            opacity: 0;
+                            transform: translateY(30px);
+                        }
+
+                        to {
+                            opacity: 1;
+                            transform: translateY(0);
+                        }
+                    }
+
+                    @keyframes numberPopBounce {
+                        0% {
+                            transform: scale(0.3);
+                            opacity: 0;
+                            filter: blur(5px);
+                        }
+
+                        50% {
+                            transform: scale(1.1);
+                            opacity: 1;
+                            filter: blur(0);
+                        }
+
+                        100% {
+                            transform: scale(1);
+                            opacity: 1;
+                        }
+                    }
+
+                    @keyframes chipFadeIn {
+                        from {
+                            opacity: 0;
+                            transform: translateY(12px);
+                        }
+
+                        to {
+                            opacity: 1;
+                            transform: translateY(0);
+                        }
+                    }
+
+                    .metric-stat-v2 {
+                        display: flex;
+                        align-items: center;
+                        gap: 1.2cqw;
+                        background: rgba(255, 202, 40, 0.04);
+                        border: 1px solid rgba(255, 202, 40, 0.15);
+                        border-radius: 14px;
+                        padding: 2cqh 2cqw;
+                        animation: metricSlideUp 0.7s cubic-bezier(0.16, 1, 0.3, 1) backwards;
+                        transition: all 0.3s ease;
+                    }
+
+                    .metric-stat-v2:hover {
+                        background: rgba(255, 202, 40, 0.08);
+                        border-color: rgba(255, 202, 40, 0.5);
+                        transform: translateY(-3px);
+                        box-shadow: 0 8px 24px rgba(255, 202, 40, 0.08);
+                    }
+
+                    .metric-stat-v2 .stat-number {
+                        background: linear-gradient(135deg, #FFCA28 0%, #FFF4D2 100%);
+                        -webkit-background-clip: text;
+                        background-clip: text;
+                        -webkit-text-fill-color: transparent;
+                        font-family: 'Sansation', sans-serif;
+                        font-weight: bold;
+                        font-size: 3.5cqw;
+                        line-height: 1;
+                        white-space: nowrap;
+                        animation: numberPopBounce 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275) backwards;
+                    }
+
+                    .metric-stat-v2 .stat-label {
+                        font-family: 'Satoshi', sans-serif;
+                        color: rgba(255, 255, 255, 0.7);
+                        font-size: 1.4cqw;
+                        line-height: 1.3;
+                    }
+
+                    .metric-stat-v2 .stat-divider {
+                        width: 1px;
+                        height: 3.5cqh;
+                        background: rgba(255, 202, 40, 0.25);
+                        flex-shrink: 0;
+                    }
+
+                    #slide-2.slide-active .metric-stat-v2:nth-child(1) {
+                        animation-delay: 0.1s;
+                    }
+
+                    #slide-2.slide-active .metric-stat-v2:nth-child(1) .stat-number {
+                        animation-delay: 0.3s;
+                    }
+
+                    #slide-2.slide-active .metric-stat-v2:nth-child(2) {
+                        animation-delay: 0.15s;
+                    }
+
+                    #slide-2.slide-active .metric-stat-v2:nth-child(2) .stat-number {
+                        animation-delay: 0.35s;
+                    }
+
+                    #slide-2.slide-active .metric-stat-v2:nth-child(3) {
+                        animation-delay: 0.2s;
+                    }
+
+                    #slide-2.slide-active .metric-stat-v2:nth-child(3) .stat-number {
+                        animation-delay: 0.4s;
+                    }
+
+                    #slide-2.slide-active .metric-stat-v2:nth-child(4) {
+                        animation-delay: 0.25s;
+                    }
+
+                    #slide-2.slide-active .metric-stat-v2:nth-child(4) .stat-number {
+                        animation-delay: 0.45s;
+                    }
+
+                    #slide-2.slide-active .metric-stat-v2:nth-child(5) {
+                        animation-delay: 0.3s;
+                    }
+
+                    #slide-2.slide-active .metric-stat-v2:nth-child(5) .stat-number {
+                        animation-delay: 0.5s;
+                    }
+
+                    .service-chip-v2 {
+                        display: flex;
+                        align-items: center;
+                        gap: 0.8cqw;
+                        padding: 1.5cqh 1.8cqw;
+                        border-radius: 50px;
+                        background: rgba(255, 255, 255, 0.03);
+                        border: 1px solid rgba(255, 255, 255, 0.08);
+                        animation: chipFadeIn 0.6s ease backwards;
+                        transition: all 0.3s ease;
+                    }
+
+                    .service-chip-v2:hover {
+                        background: rgba(255, 202, 40, 0.06);
+                        border-color: rgba(255, 202, 40, 0.3);
+                        transform: translateY(-2px);
+                    }
+
+                    .service-chip-v2 .chip-dot {
+                        width: 8px;
+                        height: 8px;
+                        border-radius: 50%;
+                        background: var(--primary);
+                        box-shadow: 0 0 10px rgba(255, 202, 40, 0.5);
+                        flex-shrink: 0;
+                    }
+
+                    .service-chip-v2 span {
+                        font-family: 'Satoshi', sans-serif;
+                        font-size: 1.5cqw;
+                        color: rgba(255, 255, 255, 0.8);
+                        white-space: nowrap;
+                    }
+
+                    #slide-2.slide-active .service-chip-v2:nth-child(1) {
+                        animation-delay: 0.5s;
+                    }
+
+                    #slide-2.slide-active .service-chip-v2:nth-child(2) {
+                        animation-delay: 0.55s;
+                    }
+
+                    #slide-2.slide-active .service-chip-v2:nth-child(3) {
+                        animation-delay: 0.6s;
+                    }
+
+                    #slide-2.slide-active .service-chip-v2:nth-child(4) {
+                        animation-delay: 0.65s;
+                    }
+
+                    #slide-2.slide-active .service-chip-v2:nth-child(5) {
+                        animation-delay: 0.7s;
+                    }
+                </style>
+
+                <!-- Header com Logo -->
+                <div class="anim-group anim-1 w-full"
+                    style="display:flex; align-items:center; justify-content:space-between; gap:4cqw; margin-bottom:6cqh;">
+                    <div>
+                        <h2 class="font-sansation section-heading" style="text-align:left; margin-bottom:1.5cqh;">Quem
+                            <span class="text-primary">Somos</span>
+                        </h2>
+                        <p class="font-satoshi text-muted"
+                            style="text-align:left; font-size:1.5cqw; line-height:1.6; max-width:50cqw;">
+                            A força operacional por trás da inteligência do Thundera IA.
+                            <span class="text-white font-bold">+12 anos</span> de experiência real construindo e
+                            gerenciando times de engenharia.
+                        </p>
+                    </div>
+                    <img src="assets/logo-develcode.png" alt="Develcode"
+                        style="height:4.5cqh; opacity:0.6; object-fit:contain; flex-shrink:0; filter:brightness(1.05) grayscale(0.15);">
+                </div>
+
+                <!-- Stats Row – Design Compacto Horizontal -->
+                <div class="anim-group anim-2 w-full"
+                    style="display:grid; grid-template-columns:repeat(5,1fr); gap:1.5cqw; margin-bottom:6cqh;">
+                    <div class="metric-stat-v2">
+                        <span class="stat-number count-up-num" data-target="12" data-suffix="">0</span>
+                        <div class="stat-divider"></div>
+                        <span class="stat-label">Anos de<br>Mercado</span>
+                    </div>
+                    <div class="metric-stat-v2">
+                        <span class="stat-number count-up-num" data-target="6" data-suffix="x">0x</span>
+                        <div class="stat-divider"></div>
+                        <span class="stat-label">Certificados<br>GPTW</span>
+                    </div>
+                    <div class="metric-stat-v2">
+                        <span class="stat-number count-up-num" data-target="80" data-suffix="%+">0%+</span>
+                        <div class="stat-divider"></div>
+                        <span class="stat-label">NPS de<br>Satisfação</span>
+                    </div>
+                    <div class="metric-stat-v2">
+                        <span class="stat-number count-up-num" data-target="100" data-prefix="+"
+                            data-suffix="">+0</span>
+                        <div class="stat-divider"></div>
+                        <span class="stat-label">Clientes<br>Atendidos</span>
+                    </div>
+                    <div class="metric-stat-v2">
+                        <span class="stat-number count-up-num" data-target="500" data-prefix="+"
+                            data-suffix="">+0</span>
+                        <div class="stat-divider"></div>
+                        <span class="stat-label">Projetos<br>Entregues</span>
+                    </div>
+                </div>
+
+                <!-- Counter Script -->
+                <script>
+                    document.addEventListener('DOMContentLoaded', () => {
+                        const slide2 = document.getElementById('slide-2');
+                        let counted = false;
+                        const animateCountUp = () => {
+                            if (counted) return;
+                            counted = true;
+                            const counters = slide2.querySelectorAll('.count-up-num');
+                            counters.forEach(counter => {
+                                const target = +counter.getAttribute('data-target');
+                                const prefix = counter.getAttribute('data-prefix') || '';
+                                const suffix = counter.getAttribute('data-suffix') || '';
+                                let current = 0;
+                                const step = Math.ceil(target / 40);
+                                const timer = setInterval(() => {
+                                    current += step;
+                                    if (current >= target) { current = target; clearInterval(timer); }
+                                    counter.innerText = prefix + current + suffix;
+                                }, 30);
+                            });
+                        };
+                        const observer = new MutationObserver((mutations) => {
+                            mutations.forEach((m) => {
+                                if (m.attributeName === 'class' && slide2.classList.contains('slide-active')) {
+                                    setTimeout(animateCountUp, 300);
+                                } else if (m.attributeName === 'class' && !slide2.classList.contains('slide-active')) {
+                                    counted = false;
+                                    slide2.querySelectorAll('.count-up-num').forEach(c => {
+                                        const p = c.getAttribute('data-prefix') || '';
+                                        const s = c.getAttribute('data-suffix') || '';
+                                        c.innerText = p + '0' + s;
+                                    });
+                                }
+                            });
+                        });
+                        if (slide2) observer.observe(slide2, { attributes: true });
+                    });
+                </script>
+
+                <!-- Separator Line -->
+                <div class="anim-group anim-2 w-full"
+                    style="height:1px; background:linear-gradient(to right, transparent, rgba(255,202,40,0.15) 20%, rgba(255,202,40,0.15) 80%, transparent); margin-bottom:5cqh;">
+                </div>
+
+                <!-- O que fazemos – Chips -->
+                <div class="anim-group anim-3 w-full" style="margin-bottom:2cqh;">
+                    <p class="font-satoshi uppercase"
+                        style="font-size:0.85cqw; letter-spacing:4px; color:rgba(255,202,40,0.5); margin-bottom:2.5cqh;">
+                        O
+                        que fazemos</p>
+                    <div style="display:flex; flex-wrap:wrap; gap:1.2cqw;">
+                        <div class="service-chip-v2">
+                            <div class="chip-dot"></div><span>Outsourcing de TI</span>
+                        </div>
+                        <div class="service-chip-v2">
+                            <div class="chip-dot"></div><span>Desenvolvimento de Produtos Digitais</span>
+                        </div>
+                        <div class="service-chip-v2">
+                            <div class="chip-dot"></div><span>Data Analytics e Business Intelligence</span>
+                        </div>
+                        <div class="service-chip-v2">
+                            <div class="chip-dot"></div><span>IA Generativa e Agentes Inteligentes</span>
+                        </div>
+                        <div class="service-chip-v2">
+                            <div class="chip-dot"></div><span>Cloud Computing e Infraestrutura</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Slide 02b: Marcas que Confiam -->
+        <section class="slide" id="slide-2b" data-title="Nossos Clientes">
+            <!-- Premium Background Highlight -->
+            <div class="slide-context-bg" style="position: absolute; inset: 0; overflow: hidden; z-index: -2;">
+                <div
+                    style="position: absolute; top: -20%; right: -10%; width: 50%; height: 50%; background: radial-gradient(circle, rgba(255,202,40,0.08) 0%, transparent 70%);">
+                </div>
+                <div
+                    style="position: absolute; bottom: -20%; left: -10%; width: 50%; height: 50%; background: radial-gradient(circle, rgba(255,202,40,0.05) 0%, transparent 70%);">
+                </div>
+            </div>
+
+            <div class="slide-content flow-layout"
+                style="justify-content: flex-start; padding-top: 5cqh; align-items: flex-start; padding-left: 8cqw; padding-right: 8cqw; padding-bottom: 5cqh; height: 100%;">
+
+                <!-- Header - Removed yellow border for consistency -->
+                <div class="anim-group anim-1 text-left w-full focus-title"
+                    style="padding-left: 0; margin-bottom: 8cqh;">
+                    <h2 class="font-sansation section-heading"
+                        style="text-align: left; margin-bottom: 1cqh; font-size: 3.5cqw;">Marcas que Confiam no Nosso
+                        Trabalho</h2>
+                    <p class="font-satoshi text-muted" style="text-align: left; font-size: 1.8cqw;">
+                        Empresas líderes de mercado que já transformaram operações com a Develcode.
+                    </p>
+                </div>
+
+                <!-- Logos Grid (20 items) -->
+                <style>
+                    .logo-grid {
+                        display: grid;
+                        grid-template-columns: repeat(5, 1fr);
+                        gap: 3cqh 2cqw;
+                        width: 100%;
+                        margin-bottom: 2cqh;
+                    }
+
+                    .logo-card-ds {
+                        background: rgba(25, 25, 25, 0.4);
+                        border: 1px solid rgba(255, 255, 255, 0.05);
+                        border-radius: 8px;
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        padding: 1.5cqh 2cqw;
+                        backdrop-filter: blur(5px);
+                        transition: all 0.3s ease;
+                        height: 13cqh;
+                        /* Increased height to fill space */
+                    }
+
+                    .logo-card-ds:hover {
+                        background: rgba(255, 202, 40, 0.05);
+                        border-color: rgba(255, 202, 40, 0.3);
+                        transform: translateY(-3px);
+                        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+                    }
+
+                    .logo-card-ds img {
+                        height: auto;
+                        width: auto;
+                        max-width: 75%;
+                        max-height: 6cqh;
+                        object-fit: contain;
+                        opacity: 0.7;
+                        transition: opacity 0.3s, filter 0.3s, transform 0.3s;
+                        filter: grayscale(100%);
+                    }
+
+                    .logo-card-ds:hover img {
+                        opacity: 1;
+                        filter: grayscale(0%);
+                        transform: scale(1.05);
+                    }
+
+                    .category-tags-carousel {
+                        width: 100%;
+                        overflow: hidden;
+                        margin-top: 6cqh;
+                        position: relative;
+                        padding: 1.5cqh 0;
+                        /* Mask edges for premium look */
+                        -webkit-mask-image: linear-gradient(to right, transparent, black 15%, black 85%, transparent);
+                        mask-image: linear-gradient(to right, transparent, black 15%, black 85%, transparent);
+                    }
+
+                    .category-tags-track {
+                        display: flex;
+                        gap: 2cqw;
+                        width: max-content;
+                        animation: infiniteScroll 40s linear infinite;
+                    }
+
+                    @keyframes infiniteScroll {
+                        0% {
+                            transform: translateX(0);
+                        }
+
+                        100% {
+                            transform: translateX(-50%);
+                        }
+                    }
+
+                    .category-tags-track:hover {
+                        animation-play-state: paused;
+                    }
+
+                    .cat-tag {
+                        border: 1px solid rgba(255, 202, 40, 0.4);
+                        padding: 1.2cqh 3cqw;
+                        font-family: 'Satoshi', sans-serif;
+                        font-size: 1.5cqw;
+                        color: var(--primary);
+                        border-radius: 50px;
+                        /* More rounded for carousel look */
+                        background: rgba(255, 202, 40, 0.05);
+                        transition: all 0.3s;
+                        text-align: center;
+                        white-space: nowrap;
+                        backdrop-filter: blur(5px);
+                    }
+
+                    .cat-tag:hover {
+                        background: var(--primary);
+                        color: #000;
+                        transform: scale(1.05);
+                        box-shadow: 0 0 20px rgba(255, 202, 40, 0.3);
+                    }
+
+                    /* Cascading for logos */
+                    #slide-2b.slide-active .anim-logo {
+                        animation: fadeInUpLogo 0.6s cubic-bezier(0.16, 1, 0.3, 1) backwards;
+                    }
+
+                    @keyframes fadeInUpLogo {
+                        from {
+                            opacity: 0;
+                            transform: translateY(20px) scale(0.95);
+                        }
+
+                        to {
+                            opacity: 1;
+                            transform: translateY(0) scale(1);
+                        }
+                    }
+
+                    /* Boost specifically for logos lacking dimensions */
+                    .logo-card-ds.logo-boost img {
+                        max-width: 100% !important;
+                        max-height: 8.5cqh !important;
+                        transform: scale(1.6);
+                    }
+
+                    .logo-card-ds.logo-boost.logo-extra img {
+                        transform: scale(1.9);
+                    }
+
+                    .logo-card-ds.logo-boost.logo-extra:hover img {
+                        transform: scale(2.05);
+                    }
+
+                    .logo-card-ds.logo-soft img {
+                        transform: scale(1.3);
+                    }
+                </style>
+
+                <div class="logo-grid anim-group anim-2">
+                    <div class="logo-card-ds anim-logo logo-boost" style="animation-delay: 0.1s;"><img
+                            src="assets/Logo-Leroy-Merlin---Branco.png" alt="Leroy Merlin"></div>
+                    <div class="logo-card-ds anim-logo logo-boost logo-extra" style="animation-delay: 0.15s;"><img
+                            src="assets/Logo RD Saúde - Branca.png" alt="RD Saúde"></div>
+                    <div class="logo-card-ds anim-logo logo-boost logo-extra" style="animation-delay: 0.2s;"><img
+                            src="assets/Riachuelo---Logo-Branca.png" alt="Riachuelo"></div>
+                    <div class="logo-card-ds anim-logo logo-boost logo-extra" style="animation-delay: 0.25s;"><img
+                            src="assets/Logo Pernambucanas - Branco.png" alt="Pernambucanas"></div>
+                    <div class="logo-card-ds anim-logo logo-boost" style="animation-delay: 0.3s;"><img
+                            src="assets/Logo Tokiomarine Branco.png" alt="Tokio Marine"></div>
+
+                    <div class="logo-card-ds anim-logo logo-soft" style="animation-delay: 0.35s;"><img
+                            src="assets/logo-unibanco-white.png" alt="Instituto Unibanco"></div>
+                    <!-- Epharma NOT boosted -->
+                    <div class="logo-card-ds anim-logo" style="animation-delay: 0.4s;"><img
+                            src="assets/Logo-Epharma---Beanco.png" alt="Epharma"></div>
+                    <div class="logo-card-ds anim-logo logo-boost logo-extra" style="animation-delay: 0.45s;"><img
+                            src="assets/Obramax.png" alt="Obramax"></div>
+                    <div class="logo-card-ds anim-logo logo-boost logo-extra" style="animation-delay: 0.5s;"><img
+                            src="assets/Logo-Boticário---Branco.png" alt="O Boticário"></div>
+                    <div class="logo-card-ds anim-logo logo-boost logo-extra" style="animation-delay: 0.55s;"><img
+                            src="assets/Sodexo.png" alt="Sodexo"></div>
+
+                    <!-- Dalca NOT boosted -->
+                    <div class="logo-card-ds anim-logo" style="animation-delay: 0.6s;"><img
+                            src="assets/Logo-Dalca---Brancp.png" alt="Dalca"></div>
+                    <div class="logo-card-ds anim-logo logo-boost logo-extra" style="animation-delay: 0.65s;"><img
+                            src="assets/LFC---Logo-Branca.png" alt="LFC"></div>
+                    <div class="logo-card-ds anim-logo logo-boost logo-extra" style="animation-delay: 0.7s;"><img
+                            src="assets/Logo-CNBB---Brancp.png" alt="CNBB"></div>
+                    <div class="logo-card-ds anim-logo logo-boost logo-extra" style="animation-delay: 0.75s;"><img
+                            src="assets/Logo-Osigu---Branca.png" alt="Osigu"></div>
+                    <!-- Copasul NOT boosted -->
+                    <div class="logo-card-ds anim-logo" style="animation-delay: 0.8s;"><img
+                            src="assets/LOGO COPASUL branco.png" alt="Copasul"></div>
+
+                    <div class="logo-card-ds anim-logo logo-boost logo-extra" style="animation-delay: 0.85s;"><img
+                            src="assets/SBK.png" alt="SBK"></div>
+                    <div class="logo-card-ds anim-logo logo-boost logo-extra" style="animation-delay: 0.9s;"><img
+                            src="assets/Neomot.png" alt="Neomot"></div>
+                    <div class="logo-card-ds anim-logo logo-boost" style="animation-delay: 0.95s;"><img
+                            src="assets/bp8.png" alt="bp8"></div>
+                    <!-- Bertolini NOT boosted -->
+                    <div class="logo-card-ds anim-logo" style="animation-delay: 1.0s;"><img
+                            src="assets/Bertolini - Logo Branca.png" alt="Grupo Bertolini"></div>
+                    <div class="logo-card-ds anim-logo logo-boost logo-extra" style="animation-delay: 1.05s;"><img
+                            src="assets/Logo-Fedrizzi-Seguros.png" alt="Fedrizzi Seguros"></div>
+                </div>
+
+                <!-- Footer Infinite Ticker -->
+                <div class="category-tags-carousel anim-group anim-3" style="animation-delay: 1.0s;">
+                    <div class="category-tags-track">
+                        <!-- Full Set -->
+                        <div class="cat-tag">Varejo</div>
+                        <div class="cat-tag">Saúde</div>
+                        <div class="cat-tag">Financeiro</div>
+                        <div class="cat-tag">Seguros</div>
+                        <div class="cat-tag">Educação</div>
+                        <div class="cat-tag">Tecnologia</div>
+                        <div class="cat-tag">Agronegócio</div>
+                        <!-- Duplicated Set for Seamless Loop -->
+                        <div class="cat-tag">Varejo</div>
+                        <div class="cat-tag">Saúde</div>
+                        <div class="cat-tag">Financeiro</div>
+                        <div class="cat-tag">Seguros</div>
+                        <div class="cat-tag">Educação</div>
+                        <div class="cat-tag">Tecnologia</div>
+                        <div class="cat-tag">Agronegócio</div>
+                    </div>
+                </div>
+
+
+
+
+
+            </div>
+        </section>
+
+
+        <!-- Slide 02c: Cases de Impacto -->
+        <section class="slide" id="slide-2c" data-title="Cases de Impacto">
+            <div class="slide-context-bg" style="position: absolute; inset: 0; overflow: hidden; z-index: -2;">
+                <!-- Subtle grid or background decoration -->
+                <div
+                    style="position: absolute; inset: 0; background: radial-gradient(circle at 50% 50%, rgba(255,202,40,0.05) 0%, transparent 60%);">
                 </div>
             </div>
 
             <div class="slide-content flow-layout" style="justify-content: flex-start; padding-top: 5cqh;">
                 <!-- Header -->
-                <div class="anim-group anim-1 text-center w-full focus-title" style="margin-bottom: 4cqh;">
-                    <h2 class="font-sansation section-heading">Investimento e Escala</h2>
-                    <p class="font-satoshi text-muted" style="font-size: 1.8cqw;">Plano de licenciamento inteligente que
-                        acompanha o crescimento do seu time.</p>
+                <div class="anim-group anim-1 text-left w-full focus-title" style="margin-bottom: 4cqh;">
+                    <h2 class="font-sansation section-heading">Cases de Impacto</h2>
+                    <p class="font-satoshi text-muted" style="font-size: 1.6cqw;">Resultados reais que comprovam nossa
+                        capacidade de transformar operações.</p>
                 </div>
 
-                <!-- Pricing Table -->
-                <div class="anim-group anim-2 w-full" style="padding: 0 4cqw;">
-                    <div class="glass-box"
-                        style="padding: 0; overflow: hidden; border: 1px solid rgba(255,202,40,0.2); background: rgba(18,18,18,0.4);">
-                        <table style="width: 100%; border-collapse: collapse; color: white; text-align: left;">
-                            <thead
-                                style="background: rgba(255,202,40,0.1); border-bottom: 1px solid rgba(255,202,40,0.3);">
-                                <tr>
-                                    <th class="font-sansation"
-                                        style="padding: 2cqh 2cqw; font-size: 1.2cqw; color: var(--primary); text-transform: uppercase; letter-spacing: 1px;">
-                                        Faixa de Devs</th>
-                                    <th class="font-sansation"
-                                        style="padding: 2cqh 2cqw; font-size: 1.2cqw; color: var(--primary); text-transform: uppercase; letter-spacing: 1px;">
-                                        Valor por Dev</th>
-                                    <th class="font-sansation"
-                                        style="padding: 2cqh 2cqw; font-size: 1.2cqw; color: var(--primary); text-transform: uppercase; letter-spacing: 1px;">
-                                        Valor Mensal Total</th>
-                                    <th class="font-sansation"
-                                        style="padding: 2cqh 2cqw; font-size: 1.2cqw; color: var(--primary); text-transform: uppercase; letter-spacing: 1px;">
-                                        Implantação</th>
-                                </tr>
-                            </thead>
-                            <tbody class="font-satoshi">
-                                <tr
-                                    style="border-bottom: 1px solid rgba(255,255,255,0.05); transition: background 0.3s; cursor: default;">
-                                    <td style="padding: 1.8cqh 2cqw; font-size: 1.3cqw; font-weight: 600;">5 – 10</td>
-                                    <td style="padding: 1.8cqh 2cqw; font-size: 1.3cqw;">R$ 200</td>
-                                    <td style="padding: 1.8cqh 2cqw; font-size: 1.3cqw;">R$ 1.000 – 2.000</td>
-                                    <td style="padding: 1.8cqh 2cqw; font-size: 1.3cqw;">R$ 6.000 – 9.600</td>
-                                </tr>
-                                <tr
-                                    style="border-bottom: 1px solid rgba(255,255,255,0.05); transition: background 0.3s; cursor: default;">
-                                    <td style="padding: 1.8cqh 2cqw; font-size: 1.3cqw; font-weight: 600;">11 – 20</td>
-                                    <td style="padding: 1.8cqh 2cqw; font-size: 1.3cqw;">R$ 180</td>
-                                    <td style="padding: 1.8cqh 2cqw; font-size: 1.3cqw;">R$ 1.980 – 3.600</td>
-                                    <td style="padding: 1.8cqh 2cqw; font-size: 1.3cqw;">R$ 9.600 – 14.400</td>
-                                </tr>
-                                <tr
-                                    style="border-bottom: 1px solid rgba(255,255,255,0.05); transition: background 0.3s; cursor: default;">
-                                    <td style="padding: 1.8cqh 2cqw; font-size: 1.3cqw; font-weight: 600;">21 – 35</td>
-                                    <td style="padding: 1.8cqh 2cqw; font-size: 1.3cqw;">R$ 160</td>
-                                    <td style="padding: 1.8cqh 2cqw; font-size: 1.3cqw;">R$ 3.360 – 5.600</td>
-                                    <td style="padding: 1.8cqh 2cqw; font-size: 1.3cqw;">R$ 14.400 – 21.600</td>
-                                </tr>
-                                <tr
-                                    style="border-bottom: 1px solid rgba(255,255,255,0.05); transition: background 0.3s; cursor: default;">
-                                    <td style="padding: 1.8cqh 2cqw; font-size: 1.3cqw; font-weight: 600;">36 – 50</td>
-                                    <td style="padding: 1.8cqh 2cqw; font-size: 1.3cqw;">R$ 140</td>
-                                    <td style="padding: 1.8cqh 2cqw; font-size: 1.3cqw;">R$ 5.040 – 7.000</td>
-                                    <td style="padding: 1.8cqh 2cqw; font-size: 1.3cqw;">R$ 21.600 – 30.000</td>
-                                </tr>
-                                <tr
-                                    style="border-bottom: 1px solid rgba(255,255,255,0.05); transition: background 0.3s; cursor: default;">
-                                    <td style="padding: 1.8cqh 2cqw; font-size: 1.3cqw; font-weight: 600;">51 – 80</td>
-                                    <td style="padding: 1.8cqh 2cqw; font-size: 1.3cqw;">R$ 120</td>
-                                    <td style="padding: 1.8cqh 2cqw; font-size: 1.3cqw;">R$ 6.120 – 9.600</td>
-                                    <td style="padding: 1.8cqh 2cqw; font-size: 1.3cqw;">R$ 30.000 – 42.000</td>
-                                </tr>
-                                <tr
-                                    style="border-bottom: 1px solid rgba(255,255,255,0.05); transition: background 0.3s; cursor: default;">
-                                    <td style="padding: 1.8cqh 2cqw; font-size: 1.3cqw; font-weight: 600;">81 – 120</td>
-                                    <td style="padding: 1.8cqh 2cqw; font-size: 1.3cqw;">R$ 100</td>
-                                    <td style="padding: 1.8cqh 2cqw; font-size: 1.3cqw;">R$ 8.100 – 12.000</td>
-                                    <td style="padding: 1.8cqh 2cqw; font-size: 1.3cqw;">R$ 42.000 – 60.000</td>
-                                </tr>
-                                <tr style="background: rgba(255,202,40,0.08); font-weight: bold;">
-                                    <td style="padding: 1.8cqh 2cqw; font-size: 1.3cqw;">120+</td>
-                                    <td style="padding: 1.8cqh 2cqw; font-size: 1.3cqw;">Sob consulta</td>
-                                    <td style="padding: 1.8cqh 2cqw; font-size: 1.3cqw;">Sob consulta</td>
-                                    <td style="padding: 1.8cqh 2cqw; font-size: 1.3cqw;">R$ 60.000+</td>
-                                </tr>
-                            </tbody>
-                        </table>
+                <!-- Cases Grid -->
+                <div class="align-split w-full" style="gap: 2cqw; align-items: stretch;">
+
+                    <!-- Case 1: Leroy Merlin Instala -->
+                    <div class="glass-box anim-group anim-2"
+                        style="flex: 1; padding: 3cqh 2cqw; border-top: 3px solid var(--primary); display: flex; flex-direction: column; gap: 2cqh; background: rgba(18,18,18,0.7); backdrop-filter: blur(14px);">
+                        <div
+                            style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 1cqh;">
+                            <span class="font-satoshi text-primary uppercase"
+                                style="font-size: 0.9cqw; letter-spacing: 2px; font-weight: 700;">Leroy Merlin</span>
+                            <img src="assets/Logo-Leroy-Merlin---Branco.png" alt="Leroy Merlin"
+                                style="height: 5cqh; opacity: 0.9; object-fit: contain;">
+                        </div>
+
+                        <h4 class="font-sansation text-white"
+                            style="font-size: 1.5cqw; line-height: 1.3; margin-bottom: 1cqh;">Proj. Instala <br> Venda
+                            de
+                            Serviços Digital</h4>
+
+                        <div style="margin-bottom: 2cqh;">
+                            <span class="font-satoshi text-primary uppercase font-bold"
+                                style="font-size: 0.9cqw; letter-spacing: 1.5px; display: block; margin-bottom: 0.8cqh; opacity: 0.8;">O
+                                Desafio</span>
+                            <p class="font-satoshi text-muted" style="font-size: 1.2cqw; line-height: 1.4;">Criação de
+                                canal digital de serviços integrado ao ERP para substituir processos 100% manuais.</p>
+                        </div>
+
+                        <div style="margin-top: auto;">
+                            <span class="font-satoshi text-primary uppercase font-bold"
+                                style="font-size: 0.9cqw; letter-spacing: 1.5px; display: block; margin-bottom: 1.5cqh; opacity: 0.8;">Resultados
+                                Obtidos</span>
+
+                            <div style="display: flex; flex-direction: column; gap: 1.2cqh;">
+                                <div
+                                    style="display: flex; align-items: center; justify-content: space-between; background: rgba(255,202,40,0.08); padding: 1cqh 1.2cqw; border-radius: 8px;">
+                                    <span class="font-satoshi text-white" style="font-size: 1.1cqw;">Serviços
+                                        Realizados</span>
+                                    <span class="font-sansation text-primary font-bold"
+                                        style="font-size: 1.3cqw;">300.000</span>
+                                </div>
+                                <div
+                                    style="display: flex; align-items: center; justify-content: space-between; background: rgba(255,202,40,0.08); padding: 1cqh 1.2cqw; border-radius: 8px;">
+                                    <span class="font-satoshi text-white" style="font-size: 1.1cqw;">Profissionais
+                                        Cadastrados</span>
+                                    <span class="font-sansation text-primary font-bold"
+                                        style="font-size: 1.3cqw;">2.000</span>
+                                </div>
+                                <div
+                                    style="display: flex; align-items: center; justify-content: space-between; background: rgba(255,202,40,0.08); padding: 1cqh 1.2cqw; border-radius: 8px;">
+                                    <span class="font-satoshi text-white" style="font-size: 1.1cqw;">Categorias de
+                                        Serviço</span>
+                                    <span class="font-sansation text-primary font-bold"
+                                        style="font-size: 1.3cqw;">84+</span>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                </div>
 
-                <div class="anim-group anim-3 mt-4 text-center w-full">
-                    <p class="font-satoshi text-muted" style="font-size: 1.1cqw; opacity: 0.7;">* Valores expressos em
-                        Reais (BRL). A implantação inclui onboarding e integração total das bases.</p>
+                    <!-- New Case 2: Grande Empresa Varejo/Saúde -->
+                    <div class="glass-box anim-group anim-3"
+                        style="flex: 1; padding: 3cqh 2cqw; border-top: 3px solid var(--primary); display: flex; flex-direction: column; gap: 2cqh; background: rgba(18,18,18,0.7); backdrop-filter: blur(14px);">
+                        <div
+                            style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 1cqh;">
+                            <span class="font-satoshi text-primary uppercase"
+                                style="font-size: 0.9cqw; letter-spacing: 2px; font-weight: 700;">Varejo & Saúde</span>
+                            <div
+                                style="width: 5cqh; height: 5cqh; background: rgba(255,202,40,0.1); border-radius: 50%; display: flex; align-items: center; justify-content: center; border: 1px solid rgba(255,202,40,0.3);">
+                                <i class="ph-bold ph-shopping-cart text-primary" style="font-size: 2.5cqh;"></i>
+                            </div>
+                        </div>
+
+                        <h4 class="font-sansation text-white"
+                            style="font-size: 1.5cqw; line-height: 1.3; margin-bottom: 1cqh;">Reengenharia de App e
+                            Plataforma</h4>
+
+                        <div style="margin-bottom: 2cqh;">
+                            <span class="font-satoshi text-primary uppercase font-bold"
+                                style="font-size: 0.9cqw; letter-spacing: 1.5px; display: block; margin-bottom: 0.8cqh; opacity: 0.8;">O
+                                Desafio</span>
+                            <p class="font-satoshi text-muted" style="font-size: 1.2cqw; line-height: 1.4;">Modernização
+                                de app com 4M+ usuários em stack obsoleta sem interrupção crítica de operação.</p>
+                        </div>
+
+                        <div style="margin-top: auto;">
+                            <span class="font-satoshi text-primary uppercase font-bold"
+                                style="font-size: 0.9cqw; letter-spacing: 1.5px; display: block; margin-bottom: 1.5cqh; opacity: 0.8;">Resultados
+                                Obtidos</span>
+
+                            <div style="display: flex; flex-direction: column; gap: 1.2cqh;">
+                                <div
+                                    style="display: flex; align-items: center; justify-content: space-between; background: rgba(255,202,40,0.12); padding: 1cqh 1.2cqw; border-radius: 8px; border: 1px solid rgba(255,202,40,0.2);">
+                                    <span class="font-satoshi text-white" style="font-size: 1.1cqw;">Net Satisfaction
+                                        Score</span>
+                                    <span class="font-sansation text-primary font-bold"
+                                        style="font-size: 1.3cqw;">+90%</span>
+                                </div>
+                                <div
+                                    style="display: flex; align-items: center; justify-content: space-between; background: rgba(255,202,40,0.12); padding: 1cqh 1.2cqw; border-radius: 8px; border: 1px solid rgba(255,202,40,0.2);">
+                                    <span class="font-satoshi text-white" style="font-size: 1.1cqw;">Data Load
+                                        Time</span>
+                                    <span class="font-sansation text-primary font-bold"
+                                        style="font-size: 1.3cqw;">-80%</span>
+                                </div>
+                                <div
+                                    style="display: flex; align-items: center; justify-content: space-between; background: rgba(255,202,40,0.12); padding: 1cqh 1.2cqw; border-radius: 8px; border: 1px solid rgba(255,202,40,0.2);">
+                                    <span class="font-satoshi text-white" style="font-size: 1.1cqw;">Segurança e
+                                        Vulnerabilidade</span>
+                                    <span class="font-sansation text-primary font-bold"
+                                        style="font-size: 1.3cqw;">Mitigação Total</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Case 3: Tokio Marine -->
+                    <div class="glass-box anim-group anim-4"
+                        style="flex: 1; padding: 3cqh 2cqw; border-top: 3px solid var(--primary); display: flex; flex-direction: column; gap: 2cqh; background: rgba(18,18,18,0.7); backdrop-filter: blur(14px);">
+                        <div
+                            style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 1cqh;">
+                            <span class="font-satoshi text-primary uppercase"
+                                style="font-size: 0.9cqw; letter-spacing: 2px; font-weight: 700;">Tokio Marine</span>
+                            <img src="assets/Logo Tokiomarine Branco.png" alt="Tokio Marine"
+                                style="height: 5cqh; opacity: 0.9; object-fit: contain;">
+                        </div>
+
+                        <h4 class="font-sansation text-white"
+                            style="font-size: 1.5cqw; line-height: 1.3; margin-bottom: 1cqh;">App de Atendimento a
+                            Sinistros</h4>
+
+                        <div style="margin-bottom: 2cqh;">
+                            <span class="font-satoshi text-primary uppercase font-bold"
+                                style="font-size: 0.9cqw; letter-spacing: 1.5px; display: block; margin-bottom: 0.8cqh; opacity: 0.8;">O
+                                Desafio</span>
+                            <p class="font-satoshi text-muted" style="font-size: 1.2cqw; line-height: 1.4;">Redução de
+                                gargalos operacionais no atendimento telefônico via automação digital.</p>
+                        </div>
+
+                        <div style="margin-top: auto;">
+                            <span class="font-satoshi text-primary uppercase font-bold"
+                                style="font-size: 0.9cqw; letter-spacing: 1.5px; display: block; margin-bottom: 1.5cqh; opacity: 0.8;">Resultados
+                                Obtidos</span>
+
+                            <div style="display: flex; flex-direction: column; gap: 1.2cqh;">
+                                <div
+                                    style="display: flex; align-items: center; justify-content: space-between; background: rgba(255,202,40,0.08); padding: 1cqh 1.2cqw; border-radius: 8px;">
+                                    <span class="font-satoshi text-white" style="font-size: 1.1cqw;">Custos
+                                        Operacionais</span>
+                                    <span class="font-sansation text-primary font-bold"
+                                        style="font-size: 1.3cqw;">-30%</span>
+                                </div>
+                                <div
+                                    style="display: flex; align-items: center; justify-content: space-between; background: rgba(255,202,40,0.08); padding: 1cqh 1.2cqw; border-radius: 8px;">
+                                    <span class="font-satoshi text-white" style="font-size: 1.1cqw;">Agilidade no
+                                        Atendimento</span>
+                                    <span class="font-sansation text-primary font-bold"
+                                        style="font-size: 1.3cqw;">Elevada</span>
+                                </div>
+                                <div
+                                    style="display: flex; align-items: center; justify-content: space-between; background: rgba(255,202,40,0.08); padding: 1cqh 1.2cqw; border-radius: 8px;">
+                                    <span class="font-satoshi text-white" style="font-size: 1.1cqw;">Erros
+                                        Manuais</span>
+                                    <span class="font-sansation text-primary font-bold"
+                                        style="font-size: 1.3cqw;">Extintos</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
                 </div>
             </div>
         </section>
@@ -2429,6 +2103,119 @@
             </div>
         </section>
 
+        <!-- Slide Calculadora de Investimento -->
+        <section class="slide" id="slide-pricing" data-title="Investimento">
+            <div class="slide-context-bg" style="position:absolute;inset:0;overflow:hidden;z-index:-2;">
+                <div
+                    style="position:absolute;top:-10%;right:-5%;width:40%;height:40%;background:radial-gradient(circle,rgba(255,202,40,0.06) 0%,transparent 70%);">
+                </div>
+                <div
+                    style="position:absolute;bottom:-10%;left:-5%;width:40%;height:40%;background:radial-gradient(circle,rgba(255,202,40,0.04) 0%,transparent 70%);">
+                </div>
+            </div>
+
+            <div class="slide-content flow-layout"
+                style="justify-content:flex-start;padding-top:5cqh;padding-left:8cqw;padding-right:8cqw;">
+                <div class="anim-group anim-1 text-center w-full" style="margin-bottom:4cqh;">
+                    <h2 class="font-sansation section-heading">Quanto custa para <span class="text-primary">sua
+                            operação?</span></h2>
+                    <p class="font-satoshi text-muted" style="font-size:1.8cqw;">Crescimento previsível atrelado ao
+                        ganho direto de eficiência e rentabilidade.</p>
+                </div>
+
+                <div class="anim-group anim-2 w-full"
+                    style="display:flex;flex-direction:column;align-items:center;gap:4cqh;">
+                    <div style="display:flex;align-items:center;gap:2cqw;margin-bottom:2cqh;">
+                        <button onclick="adjustDevs(-1)"
+                            style="width:5cqw;height:5cqw;border-radius:50%;background:rgba(255,202,40,0.12);border:2px solid rgba(255,202,40,0.4);color:var(--primary);font-size:2.5cqw;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all 0.2s;"
+                            onmouseover="this.style.background='rgba(255,202,40,0.25)'"
+                            onmouseout="this.style.background='rgba(255,202,40,0.12)'">−</button>
+                        <div style="position:relative;">
+                            <input type="number" id="dev-count-input" min="1" max="500" value="10"
+                                style="width:20cqw;text-align:center;font-family:'Sansation',sans-serif;font-size:4.5cqw;font-weight:bold;color:var(--primary);background:rgba(255,202,40,0.06);border:2px solid rgba(255,202,40,0.3);border-radius:16px;padding:1.5cqh 2cqw;outline:none;transition:border-color 0.3s;"
+                                oninput="calcPricing()" onfocus="this.style.borderColor='rgba(255,202,40,0.9)'"
+                                onblur="this.style.borderColor='rgba(255,202,40,0.3)'">
+                            <span class="font-satoshi text-muted"
+                                style="position:absolute;left:50%;transform:translateX(-50%);bottom:-3cqh;font-size:1.2cqw;pointer-events:none;white-space:nowrap;">Membros
+                                no Time</span>
+                        </div>
+                        <button onclick="adjustDevs(1)"
+                            style="width:5cqw;height:5cqw;border-radius:50%;background:rgba(255,202,40,0.12);border:2px solid rgba(255,202,40,0.4);color:var(--primary);font-size:2.5cqw;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all 0.2s;"
+                            onmouseover="this.style.background='rgba(255,202,40,0.25)'"
+                            onmouseout="this.style.background='rgba(255,202,40,0.12)'">+</button>
+                    </div>
+                    <div id="pricing-result" class="w-full"
+                        style="display:grid;grid-template-columns:repeat(3,1fr);gap:2cqw;transition:all 0.4s;"></div>
+                    <p id="pricing-note" class="font-satoshi text-muted"
+                        style="font-size:1.0cqw;opacity:0.6;text-align:center;margin-top:-1cqh;"></p>
+                </div>
+            </div>
+
+            <script>
+                (function () {
+                    const tiers = [
+                        { min: 5, max: 10, perDev: 200, iMin: 6000, iMax: 9600 },
+                        { min: 11, max: 20, perDev: 180, iMin: 9600, iMax: 14400 },
+                        { min: 21, max: 35, perDev: 160, iMin: 14400, iMax: 21600 },
+                        { min: 36, max: 50, perDev: 140, iMin: 21600, iMax: 30000 },
+                        { min: 51, max: 80, perDev: 120, iMin: 30000, iMax: 42000 },
+                        { min: 81, max: 120, perDev: 100, iMin: 42000, iMax: 60000 },
+                        { min: 121, max: 9999, perDev: null, iMin: 60000, iMax: null }
+                    ];
+                    function fmt(n) { return 'R$ ' + n.toLocaleString('pt-BR'); }
+
+                    window.adjustDevs = function (d) {
+                        var inp = document.getElementById('dev-count-input');
+                        var current = parseInt(inp.value) || 10;
+                        inp.value = Math.max(1, Math.min(500, current + d));
+                        calcPricing();
+                    };
+
+                    window.calcPricing = function () {
+                        var inp = document.getElementById('dev-count-input');
+                        if (!inp) return;
+                        var devs = parseInt(inp.value) || 0;
+                        var res = document.getElementById('pricing-result');
+                        var note = document.getElementById('pricing-note');
+
+                        if (devs < 5) {
+                            res.innerHTML = '<div style="grid-column:1/-1;text-align:center;padding:3cqh;color:rgba(255,202,40,0.6);font-family:Satoshi,sans-serif;font-size:1.5cqw;">O Thundera é recomendado para times a partir de 5 membros para garantir a escala.</div>';
+                            note.textContent = ''; return;
+                        }
+                        var t = tiers.find(function (x) { return devs >= x.min && devs <= x.max; });
+                        if (!t) return;
+
+                        if (t.perDev === null) {
+                            res.innerHTML = '<div style="grid-column:1/-1;text-align:center;padding:4cqh;background:rgba(255,202,40,0.06);border:1px solid rgba(255,202,40,0.3);border-top:3px solid var(--primary);border-radius:16px;"><div style="font-family:Sansation,sans-serif;font-size:3cqw;color:var(--primary);font-weight:bold;margin-bottom:1cqh;">Proposta Personalizada (Enterprise)</div><p style="font-family:Satoshi,sans-serif;color:rgba(255,255,255,0.6);font-size:1.4cqw;">Para operações acima de 120 talentos, entre em contato para modelagem dedicada.</p></div>';
+                            note.textContent = '* Implantação Enterprise a partir de ' + fmt(60000) + '. Valores em BRL.'; return;
+                        }
+                        var monthly = t.perDev * devs;
+                        var card = function (label, val, sub, highlight) {
+                            var border = highlight ? 'border-top:3px solid var(--primary);background:rgba(255,202,40,0.08);' : 'border-top:3px solid rgba(255,202,40,0.4);background:rgba(255,202,40,0.04);';
+                            return '<div style="' + border + 'border-bottom:1px solid rgba(255,202,40,0.2); border-left:1px solid rgba(255,202,40,0.2); border-right:1px solid rgba(255,202,40,0.2); border-radius:16px;padding:3cqh 2cqw;text-align:center;">' +
+                                '<div style="font-family:Satoshi,sans-serif;font-size:1.0cqw;color:rgba(255,202,40,0.7);text-transform:uppercase;letter-spacing:2px;margin-bottom:1.5cqh;">' + label + '</div>' +
+                                '<div style="font-family:Sansation,sans-serif;font-size:3.2cqw;font-weight:bold;color:' + (highlight ? 'white' : 'var(--primary)') + ';">' + val + '</div>' +
+                                '<div style="font-family:Satoshi,sans-serif;font-size:1.0cqw;color:rgba(255,255,255,0.4);margin-top:0.5cqh;">' + sub + '</div></div>';
+                        };
+                        res.innerHTML =
+                            card('Acesso por Membro', fmt(t.perDev), '/mês por pessoa ativa', false) +
+                            card('Licenciamento Mensal', fmt(monthly), devs + ' pessoas × ' + fmt(t.perDev), true) +
+                            card('Taxa de Implantação', fmt(t.iMin) + ' – ' + fmt(t.iMax), 'Onboarding + Integração', false);
+                        note.textContent = '* Faixa comercial atingida: ' + t.min + ' à ' + t.max + ' membros. Valores faturados integralmente em BRL.';
+                    };
+
+                    document.addEventListener('DOMContentLoaded', function () {
+                        setTimeout(calcPricing, 100);
+                        var sl = document.getElementById('slide-pricing');
+                        if (sl) {
+                            new MutationObserver(function () {
+                                if (sl.classList.contains('slide-active')) { calcPricing(); }
+                            }).observe(sl, { attributes: true });
+                        }
+                    });
+                })();
+            </script>
+        </section>
     </main>
 
     <!-- Side Navigation Triggers (Invisible hitboxes for mouse users) -->

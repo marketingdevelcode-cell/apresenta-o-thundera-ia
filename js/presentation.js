@@ -24,6 +24,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // Triggers
     const btnFullscreen = document.getElementById('btn-fullscreen');
     const btnToggleEye = document.getElementById('btn-toggle-eye');
+    const btnExportPdf = document.getElementById('btn-export-pdf');
 
     // New: Company & Study UI
     const companySelector = document.getElementById('company-selector');
@@ -386,6 +387,7 @@ document.addEventListener('DOMContentLoaded', () => {
     btnMap.addEventListener('click', () => toggleMap());
     btnCloseMap.addEventListener('click', () => toggleMap(false));
     btnFullscreen.addEventListener('click', toggleFullscreen);
+    if (btnExportPdf) btnExportPdf.addEventListener('click', exportToPDF);
 
     // Company UI Listeners
     if (companySelector) {
@@ -443,8 +445,159 @@ document.addEventListener('DOMContentLoaded', () => {
             case 'F':
                 toggleFullscreen();
                 break;
+            case 'p':
+            case 'P':
+                exportToPDF();
+                break;
         }
     });
+
+    // --- PDF Export ---
+    async function exportToPDF() {
+        const activeSlides = domSlides.filter(s => !s.classList.contains('hidden-slide'));
+        if (activeSlides.length === 0) {
+            alert('Nenhum slide visível para exportar.');
+            return;
+        }
+
+        // Feedback visual
+        const originalHtml = btnExportPdf.innerHTML;
+        btnExportPdf.innerHTML = '<i class="ph ph-circle-notch anim-spin"></i>';
+
+        // Bloqueio de tela e indicador de progresso
+        const loader = document.createElement('div');
+        loader.style.cssText = "position:fixed; inset:0; background:rgba(0,0,0,0.92); z-index:9999; display:flex; flex-direction:column; align-items:center; justify-content:center; color:white; font-family:sans-serif; backdrop-filter:blur(15px);";
+        loader.innerHTML = `
+            <div style="font-size:3.5rem; margin-bottom:1.5rem; color:#FFCA28;"><i class="ph ph-circle-notch anim-spin"></i></div>
+            <div style="font-size:1.8rem; font-weight:bold; letter-spacing:2px; margin-bottom:0.5rem;">CONSOLIDANDO PDF</div>
+            <div id="pdf-progress-text" style="font-size:1.2rem; color:#FFCA28; font-weight:bold; margin-bottom:1.5rem;">0%</div>
+            
+            <div style="width:300px; height:6px; background:rgba(255,255,255,0.1); border-radius:10px; overflow:hidden; margin-bottom:1.5rem;">
+                <div id="pdf-progress-bar" style="width:0%; height:100%; background:#FFCA28; transition:width 0.3s ease;"></div>
+            </div>
+
+            <div id="pdf-status-detail" style="opacity:0.6; font-size:0.9rem;">Preparando slides...</div>
+        `;
+        document.body.appendChild(loader);
+
+        const progressText = loader.querySelector('#pdf-progress-text');
+        const progressBarEl = loader.querySelector('#pdf-progress-bar');
+        const statusDetail = loader.querySelector('#pdf-status-detail');
+
+        // Salva o estado atual para restaurar depois
+        const savedIndex = currentSlideIndex;
+
+        // Helper: aguarda 2 frames de animação + delay em ms
+        // Garante que o browser pintou antes da captura
+        function waitForPaint(ms = 400) {
+            return new Promise(resolve => {
+                requestAnimationFrame(() => {
+                    requestAnimationFrame(() => {
+                        setTimeout(resolve, ms);
+                    });
+                });
+            });
+        }
+
+        // Inicializa o documento PDF (Landscape, px, 16:9)
+        const { jsPDF } = window.jspdf;
+        const pdf = new jsPDF('l', 'px', [1280, 720]);
+
+        try {
+            for (let i = 0; i < activeSlides.length; i++) {
+                const targetSlide = activeSlides[i];
+
+                // Atualiza o progresso
+                const percent = Math.round((i / activeSlides.length) * 100);
+                progressText.textContent = `${percent}%`;
+                progressBarEl.style.width = `${percent}%`;
+                statusDetail.textContent = `Renderizando slide ${i + 1} de ${activeSlides.length}...`;
+
+                // 1. Navega para o slide no DOM real para que o browser renderize
+                //    com todas as classes CSS, unidades cqw/cqh e imagens corretas
+                const compiledIdx = slides.indexOf(targetSlide);
+                if (compiledIdx !== -1) {
+                    goToSlide(compiledIdx);
+                } else {
+                    // Forçar ativação de slide oculto temporariamente
+                    domSlides.forEach(s => s.classList.remove('slide-active', 'slide-prev', 'slide-next'));
+                    targetSlide.classList.add('slide-active');
+                    targetSlide.style.display = '';
+                }
+
+                // 2. Aguarda o browser pintar completamente:
+                //    transitions CSS (~300ms) + imagens carregando + 2 frames extras
+                await waitForPaint(500);
+
+                // 3. Captura diretamente o elemento slide do DOM real
+                try {
+                    const rect = targetSlide.getBoundingClientRect();
+
+                    const capturePromise = html2canvas(targetSlide, {
+                        scale: 1.5,
+                        useCORS: true,
+                        allowTaint: true,
+                        backgroundColor: '#050505',
+                        logging: false,
+                        width: rect.width || 1280,
+                        height: rect.height || 720,
+                        scrollX: -window.scrollX,
+                        scrollY: -window.scrollY,
+                        windowWidth: document.documentElement.scrollWidth,
+                        windowHeight: document.documentElement.scrollHeight,
+                        ignoreElements: (el) => {
+                            // Ignora elementos da UI que não fazem parte do slide
+                            return el === loader ||
+                                el.classList.contains('ui-header') ||
+                                el.classList.contains('progress-bar-container') ||
+                                el.id === 'slide-map' ||
+                                el.id === 'study-area-overlay' ||
+                                el.id === 'nav-area-prev' ||
+                                el.id === 'nav-area-next';
+                        }
+                    });
+
+                    // Timeout de 20 segundos por slide
+                    const timeoutPromise = new Promise((_, reject) =>
+                        setTimeout(() => reject(new Error('Tempo limite excedido')), 20000)
+                    );
+
+                    const canvas = await Promise.race([capturePromise, timeoutPromise]);
+                    const imgData = canvas.toDataURL('image/jpeg', 0.92);
+
+                    if (i > 0) pdf.addPage([1280, 720], 'l');
+                    pdf.addImage(imgData, 'JPEG', 0, 0, 1280, 720, undefined, 'FAST');
+
+                    console.log(`[PDF] Slide ${i + 1} capturado com sucesso.`);
+                } catch (slideError) {
+                    console.error(`[PDF] Erro no slide ${i + 1}:`, slideError);
+                    if (i > 0) pdf.addPage([1280, 720], 'l');
+                    pdf.setFillColor(10, 10, 15);
+                    pdf.rect(0, 0, 1280, 720, 'F');
+                    pdf.setTextColor(150, 150, 150);
+                    pdf.setFontSize(20);
+                    pdf.text(`Slide ${i + 1}: Erro de Renderização (${slideError.message})`, 100, 360);
+                }
+            }
+
+            // Finaliza progresso
+            progressText.textContent = '100%';
+            progressBarEl.style.width = '100%';
+            statusDetail.textContent = 'Gerando arquivo PDF...';
+            await waitForPaint(200);
+
+            // Salva o PDF
+            pdf.save('Apresentacao_Thundera_IA.pdf');
+        } catch (err) {
+            console.error('Erro Fatal no PDF:', err);
+            alert('Erro crítico ao gerar PDF: ' + err.message);
+        } finally {
+            // Restaura o slide que o usuário estava visualizando antes da exportação
+            goToSlide(savedIndex);
+            document.body.removeChild(loader);
+            btnExportPdf.innerHTML = originalHtml;
+        }
+    }
 
     // Subida Tática
     init();
