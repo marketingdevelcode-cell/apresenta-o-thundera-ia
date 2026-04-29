@@ -10,6 +10,9 @@
     <link href="https://api.fontshare.com/v2/css?f[]=satoshi@900,700,500,300,400&display=swap" rel="stylesheet">
     <!-- Phosphor Icons -->
     <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    <!-- PDF Export Libraries -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
 
     <!-- Using base styles to inherit font and color logic, plus presentation specifics -->
     <link rel="stylesheet" href="style/presentation.css">
@@ -45,11 +48,32 @@
             <button id="btn-fullscreen" class="btn-icon" title="Tela Cheia (F)">
                 <i class="ph ph-corners-out"></i>
             </button>
+            <button id="btn-export-pdf" class="btn-icon" title="Exportar PDF"
+                style="color: var(--primary); border: 1px solid rgba(255,202,40,0.35); border-radius: 8px; padding: 0 0.7em;">
+                <i class="ph ph-file-pdf"></i>
+            </button>
         </div>
     </header>
 
     <!-- Background Dynamic Glow -->
     <div class="presentation-bg"></div>
+
+    <!-- PDF Export Progress Overlay -->
+    <div id="pdf-export-overlay"
+        style="display:none; position:fixed; inset:0; z-index:99999; background:rgba(10,10,12,0.92); backdrop-filter:blur(16px); flex-direction:column; align-items:center; justify-content:center; gap:3vh;">
+        <div
+            style="font-family:'Sansation',sans-serif; font-size:2.2vw; color:#fff; font-weight:700; letter-spacing:-0.5px;">
+            Gerando PDF</div>
+        <div style="font-family:'Satoshi',sans-serif; font-size:1.1vw; color:rgba(255,202,40,0.8);"
+            id="pdf-status-text">Preparando slides...</div>
+        <div style="width:40vw; height:6px; background:rgba(255,255,255,0.1); border-radius:99px; overflow:hidden;">
+            <div id="pdf-progress-bar"
+                style="height:100%; width:0%; background:linear-gradient(90deg, rgba(255,202,40,0.7), #FFCA28); border-radius:99px; transition:width 0.4s ease;">
+            </div>
+        </div>
+        <div style="font-family:'Satoshi',sans-serif; font-size:1vw; color:rgba(255,255,255,0.4);" id="pdf-slide-label">
+            0 / 0</div>
+    </div>
 
     <!-- Slide Map Overlay (Jump Menu) -->
     <div id="slide-map" class="slide-map-overlay">
@@ -2147,7 +2171,7 @@
                     <div id="pricing-result" class="w-full"
                         style="display:grid;grid-template-columns:repeat(3,1fr);gap:2cqw;transition:all 0.4s;"></div>
                     <p id="pricing-note" class="font-satoshi text-muted"
-                        style="font-size:1.0cqw;opacity:0.6;text-align:center;margin-top:-1cqh;"></p>
+                        style="font-size:1.3cqw;opacity:0.7;text-align:center;margin-top:-1cqh;"></p>
                 </div>
             </div>
 
@@ -2187,20 +2211,20 @@
 
                         if (t.perDev === null) {
                             res.innerHTML = '<div style="grid-column:1/-1;text-align:center;padding:4cqh;background:rgba(255,202,40,0.06);border:1px solid rgba(255,202,40,0.3);border-top:3px solid var(--primary);border-radius:16px;"><div style="font-family:Sansation,sans-serif;font-size:3cqw;color:var(--primary);font-weight:bold;margin-bottom:1cqh;">Proposta Personalizada (Enterprise)</div><p style="font-family:Satoshi,sans-serif;color:rgba(255,255,255,0.6);font-size:1.4cqw;">Para operações acima de 120 talentos, entre em contato para modelagem dedicada.</p></div>';
-                            note.textContent = '* Implantação Enterprise a partir de ' + fmt(60000) + '. Valores em BRL.'; return;
+                            note.textContent = '* Implantação Enterprise: ' + fmt(60000) + '+. Valores em BRL.'; return;
                         }
                         var monthly = t.perDev * devs;
                         var card = function (label, val, sub, highlight) {
                             var border = highlight ? 'border-top:3px solid var(--primary);background:rgba(255,202,40,0.08);' : 'border-top:3px solid rgba(255,202,40,0.4);background:rgba(255,202,40,0.04);';
                             return '<div style="' + border + 'border-bottom:1px solid rgba(255,202,40,0.2); border-left:1px solid rgba(255,202,40,0.2); border-right:1px solid rgba(255,202,40,0.2); border-radius:16px;padding:3cqh 2cqw;text-align:center;">' +
-                                '<div style="font-family:Satoshi,sans-serif;font-size:1.0cqw;color:rgba(255,202,40,0.7);text-transform:uppercase;letter-spacing:2px;margin-bottom:1.5cqh;">' + label + '</div>' +
+                                '<div style="font-family:Satoshi,sans-serif;font-size:1.4cqw;color:rgba(255,202,40,0.7);text-transform:uppercase;letter-spacing:2px;margin-bottom:1.5cqh;">' + label + '</div>' +
                                 '<div style="font-family:Sansation,sans-serif;font-size:3.2cqw;font-weight:bold;color:' + (highlight ? 'white' : 'var(--primary)') + ';">' + val + '</div>' +
-                                '<div style="font-family:Satoshi,sans-serif;font-size:1.0cqw;color:rgba(255,255,255,0.4);margin-top:0.5cqh;">' + sub + '</div></div>';
+                                '<div style="font-family:Satoshi,sans-serif;font-size:1.4cqw;color:rgba(255,255,255,0.5);margin-top:0.5cqh;">' + sub + '</div></div>';
                         };
                         res.innerHTML =
                             card('Acesso por Membro', fmt(t.perDev), '/mês por pessoa ativa', false) +
-                            card('Licenciamento Mensal', fmt(monthly), devs + ' pessoas × ' + fmt(t.perDev), true) +
-                            card('Taxa de Implantação', fmt(t.iMin) + ' – ' + fmt(t.iMax), 'Onboarding + Integração', false);
+                            card('Licenciamento Mensal', fmt(monthly), devs + ' pessoas \u00d7 ' + fmt(t.perDev), true) +
+                            card('Taxa de Implantação', fmt(t.iMax), 'Onboarding + Integração', false);
                         note.textContent = '* Faixa comercial atingida: ' + t.min + ' à ' + t.max + ' membros. Valores faturados integralmente em BRL.';
                     };
 
@@ -2231,6 +2255,205 @@
     <!-- Scripts -->
 
     <script src="js/presentation.js"></script>
+
+    <!-- PDF Export Script (v4 – force visible state via CSS override) -->
+    <script>
+        (function () {
+            var btn = document.getElementById('btn-export-pdf');
+            if (!btn) return;
+            btn.addEventListener('click', function () { exportPresentationPDF(); });
+
+            async function exportPresentationPDF() {
+                var EXPORT_W = 1920;
+                var EXPORT_H = 1080;
+
+                /* ── 1. Slides a exportar (sem slide-pricing) ──────────── */
+                var container = document.getElementById('slides-container');
+                var allSlides = Array.from(container.querySelectorAll(':scope > section.slide'));
+                var slides = allSlides.filter(function (s) { return s.id !== 'slide-pricing'; });
+                var total = slides.length;
+                if (total === 0) { alert('Nenhum slide para exportar.'); return; }
+
+                /* ── 2. Overlay ────────────────────────────────────────── */
+                var overlay = document.getElementById('pdf-export-overlay');
+                var statusText = document.getElementById('pdf-status-text');
+                var progressBar = document.getElementById('pdf-progress-bar');
+                var slideLabel = document.getElementById('pdf-slide-label');
+                overlay.style.display = 'flex';
+                progressBar.style.width = '0%';
+                statusText.textContent = 'Aguardando fontes...';
+                slideLabel.textContent = '0 / ' + total;
+
+                /* ── 3. Aguardar fontes ────────────────────────────────── */
+                try { await document.fonts.ready; } catch (e) { }
+                await sleep(300);
+
+                /* ── 4. CSS de captura: FORÇA todos os elementos ao estado
+                   final visível, ignorando qualquer transição ou animação.
+                   Isso resolve:
+                   - .anim-group (opacity:0 → 1 via transition)
+                   - .slide (opacity:0, visibility:hidden quando inativo)
+                   - .slide-active .anim-1..4 (transition-delay 0.4–1.0s) ── */
+                var captureCSS = document.createElement('style');
+                captureCSS.id = 'pdf-capture-css';
+                captureCSS.textContent = [
+                    /* Para todas as transições e animações: duração zero */
+                    '*, *::before, *::after {',
+                    '  animation-duration: 0.001ms !important;',
+                    '  animation-delay: 0ms !important;',
+                    '  animation-iteration-count: 1 !important;',
+                    '  transition-duration: 0.001ms !important;',
+                    '  transition-delay: 0ms !important;',
+                    '}',
+                    /* Força TODOS os .anim-group visíveis imediatamente */
+                    '.anim-group {',
+                    '  opacity: 1 !important;',
+                    '  transform: none !important;',
+                    '}',
+                    /* Garante que o slide de captura seja sempre visível */
+                    '.slide.pdf-capture-active {',
+                    '  opacity: 1 !important;',
+                    '  visibility: visible !important;',
+                    '  transform: none !important;',
+                    '  display: flex !important;',
+                    '}',
+                    /* Força o slide-content a size container explicitamente */
+                    '.slide.pdf-capture-active .slide-content {',
+                    '  container-type: size !important;',
+                    '  max-width: none !important;',
+                    '  max-height: none !important;',
+                    '  width: 100% !important;',
+                    '  height: 100% !important;',
+                    '}'
+                ].join('\n');
+                document.head.appendChild(captureCSS);
+
+                /* ── 5. Salvar estado original ─────────────────────────── */
+                var originalActive = allSlides.find(function (s) {
+                    return s.classList.contains('slide-active');
+                });
+                var uiEls = [
+                    '.ui-header', '.progress-bar-container', '.presentation-bg',
+                    '#nav-area-prev', '#nav-area-next', '#slide-map'
+                ].map(function (s) { return document.querySelector(s); }).filter(Boolean);
+                var savedUIDisplay = uiEls.map(function (el) { return el.style.display; });
+
+                var savedCtr = {
+                    position: container.style.position, left: container.style.left,
+                    top: container.style.top, width: container.style.width,
+                    height: container.style.height, zIndex: container.style.zIndex,
+                    transform: container.style.transform, borderRadius: container.style.borderRadius,
+                    overflow: container.style.overflow
+                };
+
+                /* ── 6. Ocultar UI e reposicionar container 1920×1080 ──── */
+                uiEls.forEach(function (el) { el.style.display = 'none'; });
+
+                container.style.position = 'fixed';
+                container.style.left = '0';
+                container.style.top = '0';
+                container.style.width = EXPORT_W + 'px';
+                container.style.height = EXPORT_H + 'px';
+                container.style.zIndex = '1';
+                container.style.transform = 'none';
+                container.style.borderRadius = '0';
+                container.style.overflow = 'hidden';
+
+                /* Garantir que nenhum slide esteja ativo agora */
+                allSlides.forEach(function (s) {
+                    s.classList.remove('slide-active', 'pdf-capture-active');
+                });
+
+                await rafTimes(4);
+                await sleep(300);
+
+                /* ── 7. Init jsPDF ─────────────────────────────────────── */
+                var jsPDFLib = window.jspdf && window.jspdf.jsPDF;
+                if (!jsPDFLib) {
+                    alert('jsPDF não carregado. Verifique a conexão e recarregue a página.');
+                    cleanup(); overlay.style.display = 'none'; return;
+                }
+                var pdf = new jsPDFLib({
+                    orientation: 'landscape',
+                    unit: 'px',
+                    format: [EXPORT_W, EXPORT_H]
+                });
+
+                /* ── 8. Loop de captura ────────────────────────────────── */
+                for (var i = 0; i < total; i++) {
+                    var slide = slides[i];
+                    var title = slide.getAttribute('data-title') || ('Slide ' + (i + 1));
+
+                    statusText.textContent = 'Capturando: ' + title + '  (' + (i + 1) + '/' + total + ')';
+                    slideLabel.textContent = (i + 1) + ' / ' + total;
+
+                    /* Usar classe especial de captura (não slide-active,
+                       para não conflitar com a navegação do JS da apresentação) */
+                    allSlides.forEach(function (s) { s.classList.remove('pdf-capture-active'); });
+                    slide.classList.add('pdf-capture-active');
+
+                    /* Forçar reflow: 6 frames garantem que o browser pintou */
+                    await rafTimes(6);
+                    await sleep(500);   /* buffer para imagens e fontes do slide */
+
+                    /* Captura */
+                    var canvas = await html2canvas(slide, {
+                        scale: 1,
+                        useCORS: true,
+                        allowTaint: true,
+                        backgroundColor: '#0A0A0C',
+                        logging: false,
+                        width: EXPORT_W,
+                        height: EXPORT_H,
+                        windowWidth: EXPORT_W,
+                        windowHeight: EXPORT_H,
+                        x: 0, y: 0, scrollX: 0, scrollY: 0
+                    });
+
+                    var imgData = canvas.toDataURL('image/jpeg', 0.93);
+                    if (i > 0) pdf.addPage([EXPORT_W, EXPORT_H], 'landscape');
+                    pdf.addImage(imgData, 'JPEG', 0, 0, EXPORT_W, EXPORT_H);
+
+                    progressBar.style.width = Math.round(((i + 1) / total) * 100) + '%';
+                    await sleep(30);
+                }
+
+                /* ── 9. Restaurar + baixar ─────────────────────────────── */
+                cleanup();
+                statusText.textContent = 'Baixando PDF...';
+                await sleep(300);
+                pdf.save('Thundera-Apresentacao.pdf');
+                await sleep(400);
+                overlay.style.display = 'none';
+                progressBar.style.width = '0%';
+
+                function cleanup() {
+                    var el = document.getElementById('pdf-capture-css');
+                    if (el) el.parentNode.removeChild(el);
+                    Object.keys(savedCtr).forEach(function (k) { container.style[k] = savedCtr[k]; });
+                    uiEls.forEach(function (el, idx) { el.style.display = savedUIDisplay[idx]; });
+                    allSlides.forEach(function (s) {
+                        s.classList.remove('pdf-capture-active');
+                    });
+                    if (originalActive) originalActive.classList.add('slide-active');
+                }
+            }
+
+            function rafTimes(n) {
+                return new Promise(function (resolve) {
+                    var c = 0;
+                    (function tick() {
+                        requestAnimationFrame(function () { if (++c >= n) resolve(); else tick(); });
+                    })();
+                });
+            }
+
+            function sleep(ms) {
+                return new Promise(function (resolve) { setTimeout(resolve, ms); });
+            }
+        })();
+    </script>
+
 </body>
 
 </html>
